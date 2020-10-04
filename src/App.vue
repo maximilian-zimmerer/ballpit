@@ -32,4 +32,11 @@ input {
   padding: 1em;
   display: flex;
 }
+@media (min-width: 769px) {
+  html,
+  body,
+  input {
+    font-size: 0.9vw;
+  }
+}
 </style>
