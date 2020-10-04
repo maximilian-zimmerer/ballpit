@@ -15,16 +15,17 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-size: 14px;
   color: white;
+  font-size: 12px;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+input {
+  font-size: 12px;
+}
 * {
   box-sizing: border-box;
 }
-
 #app {
   width: 100%;
   height: 100%;

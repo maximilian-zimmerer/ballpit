@@ -30,17 +30,16 @@ export default {
 
 <style scoped>
 .add-todo {
-  display: flex;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
 }
 .add-todo input:nth-of-type(1) {
-  flex: 7;
   padding: 1em;
   border-color: transparent;
   background-color: transparent;
   border-bottom: 1px solid white;
 }
 .add-todo input:nth-of-type(2) {
-  flex: 1;
   cursor: pointer;
   border-color: transparent;
   background-color: transparent;
@@ -54,10 +53,5 @@ textarea {
 }
 input:focus {
   outline: none;
-}
-@media (max-width: 767px) {
-  .add-todo input:nth-of-type(1) {
-    flex: 3;
-  }
 }
 </style>
