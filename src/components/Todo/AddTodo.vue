@@ -1,0 +1,63 @@
+<template>
+  <div>
+    <form class="add-todo" v-on:submit.prevent="newTodo">
+      <input type="text" placeholder="New Todo..." v-model="title" />
+      <input type="submit" value="Add" />
+    </form>
+  </div>
+</template>
+
+<script>
+import { v4 as uuidv4 } from "uuid";
+export default {
+  name: "AddTodo",
+  data() {
+    return {
+      title: "",
+    };
+  },
+  methods: {
+    newTodo() {
+      if (this.title != "") {
+        let newTodo = { id: uuidv4(), isComplete: false, text: this.title };
+        this.$emit("newTodo", newTodo);
+      }
+      this.title = "";
+    },
+  },
+};
+</script>
+
+<style scoped>
+.add-todo {
+  display: flex;
+}
+.add-todo input:nth-of-type(1) {
+  flex: 7;
+  padding: 1em;
+  border-color: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+}
+.add-todo input:nth-of-type(2) {
+  flex: 1;
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+}
+input,
+select,
+textarea {
+  color: white;
+}
+input:focus {
+  outline: none;
+}
+@media (max-width: 767px) {
+  .add-todo input:nth-of-type(1) {
+    flex: 3;
+  }
+}
+</style>
