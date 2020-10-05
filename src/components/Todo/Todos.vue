@@ -1,5 +1,6 @@
 <template>
   <div class="todos">
+    <TodoCanvas />
     <AddTodo @newTodo="newTodo($event)" />
     <div class="todo-items" v-for="todo in todos" :key="todo.id">
       <TodoItem
@@ -13,11 +14,13 @@
 </template>
 
 <script>
+import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
 import TodoItem from "@/components/Todo/TodoItem.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
 export default {
   name: "Todos",
   components: {
+    TodoCanvas,
     TodoItem,
     AddTodo,
   },

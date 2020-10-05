@@ -32,6 +32,10 @@ input {
   padding: 1em;
   display: flex;
 }
+canvas {
+  width: 100vw !important;
+  height: 100vh !important;
+}
 @media (min-width: 769px) {
   html,
   body,
