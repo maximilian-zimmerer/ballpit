@@ -1,26 +1,21 @@
 <template>
   <div class="todos">
-    <TodoCanvas />
+    <!-- <TodoCanvas /> -->
     <AddTodo @newTodo="newTodo($event)" />
     <div class="todo-items" v-for="todo in todos" :key="todo.id">
-      <TodoItem
-        :todo="todo"
-        @deleteTodo="deleteTodo($event)"
-        @moveUp="moveUp($event)"
-        @moveDown="moveDown($event)"
-      />
+      <TodoItem :todo="todo" @deleteTodo="deleteTodo($event)" />
     </div>
   </div>
 </template>
 
 <script>
-import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
+// import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
 import TodoItem from "@/components/Todo/TodoItem.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
 export default {
   name: "Todos",
   components: {
-    TodoCanvas,
+    // TodoCanvas,
     TodoItem,
     AddTodo,
   },
@@ -32,12 +27,12 @@ export default {
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
     },
-    moveDown(id) {
-      this.$emit("moveDown", id);
-    },
-    moveUp(id) {
-      this.$emit("moveUp", id);
-    },
+    // moveDown(id) {
+    //   this.$emit("moveDown", id);
+    // },
+    // moveUp(id) {
+    //   this.$emit("moveUp", id);
+    // },
   },
 };
 </script>

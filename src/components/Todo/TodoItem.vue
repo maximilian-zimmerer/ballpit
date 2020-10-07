@@ -2,10 +2,10 @@
   <section id="todo-item">
     <p id="complete" @click="toggleComplete">{{ status }}</p>
     <p id="text" :class="{ isComplete: this.isComplete }">{{ todo.text }}</p>
-    <div id="move-wrapper">
+    <!-- <div id="move-wrapper">
       <p id="move-up" @click="moveUp">↑</p>
       <p id="move-down" @click="moveDown">↓</p>
-    </div>
+    </div> -->
     <p id="remove" @click="deleteTodo">x</p>
   </section>
 </template>
@@ -26,12 +26,12 @@ export default {
     deleteTodo() {
       this.$emit("deleteTodo", this.todo.id);
     },
-    moveDown() {
-      this.$emit("moveDown", this.todo.id);
-    },
-    moveUp() {
-      this.$emit("moveUp", this.todo.id);
-    },
+    // moveDown() {
+    //   this.$emit("moveDown", this.todo.id);
+    // },
+    // moveUp() {
+    //   this.$emit("moveUp", this.todo.id);
+    // },
   },
   computed: {
     status() {
@@ -50,7 +50,8 @@ export default {
   word-break: break-all;
   padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
-  grid-template-columns: 0.5fr 4.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 4.5fr 0.5fr;
+  /* grid-template-columns: 0.5fr 4.5fr 0.5fr 0.5fr; */
 }
 #complete {
   cursor: pointer;
