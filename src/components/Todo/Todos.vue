@@ -3,7 +3,11 @@
     <!-- <TodoCanvas /> -->
     <AddTodo @newTodo="newTodo($event)" />
     <div class="todo-items" v-for="todo in todos" :key="todo.id">
-      <TodoItem :todo="todo" @deleteTodo="deleteTodo($event)" />
+      <TodoItem
+        :todo="todo"
+        @toggleComplete="toggleComplete($event)"
+        @deleteTodo="deleteTodo($event)"
+      />
     </div>
   </div>
 </template>
@@ -24,15 +28,12 @@ export default {
     newTodo(newTodo) {
       this.$emit("newTodo", newTodo);
     },
+    toggleComplete(data) {
+      this.$emit("toggleComplete", data);
+    },
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
     },
-    // moveDown(id) {
-    //   this.$emit("moveDown", id);
-    // },
-    // moveUp(id) {
-    //   this.$emit("moveUp", id);
-    // },
   },
 };
 </script>

@@ -2,10 +2,6 @@
   <section id="todo-item">
     <p id="complete" @click="toggleComplete">{{ status }}</p>
     <p id="text" :class="{ isComplete: this.isComplete }">{{ todo.text }}</p>
-    <!-- <div id="move-wrapper">
-      <p id="move-up" @click="moveUp">↑</p>
-      <p id="move-down" @click="moveDown">↓</p>
-    </div> -->
     <p id="remove" @click="deleteTodo">x</p>
   </section>
 </template>
@@ -16,22 +12,20 @@ export default {
   props: ["todo"],
   data() {
     return {
-      isComplete: false,
+      isComplete: this.todo.isComplete,
     };
   },
   methods: {
     toggleComplete() {
       this.isComplete = !this.isComplete;
+      this.$emit("toggleComplete", {
+        id: this.todo.id,
+        isComplete: this.isComplete,
+      });
     },
     deleteTodo() {
       this.$emit("deleteTodo", this.todo.id);
     },
-    // moveDown() {
-    //   this.$emit("moveDown", this.todo.id);
-    // },
-    // moveUp() {
-    //   this.$emit("moveUp", this.todo.id);
-    // },
   },
   computed: {
     status() {

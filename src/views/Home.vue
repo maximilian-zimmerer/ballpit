@@ -3,6 +3,7 @@
     <Todos
       :todos="todos"
       @newTodo="addTodo($event)"
+      @toggleComplete="toggleComplete($event)"
       @deleteTodo="deleteTodo($event)"
       @moveDown="moveDown($event)"
       @moveUp="moveUp($event)"
@@ -40,30 +41,44 @@ export default {
     };
   },
   methods: {
+    // add item
     addTodo(newTodo) {
-      // add new document to firebase
       myCollection
         .doc()
-        .set({
-          id: newTodo.id,
-          isComplete: newTodo.isComplete,
-          text: newTodo.text,
-        })
+        .set(newTodo)
         .then(() => {
-          console.log(this.todos);
           this.todos.push(newTodo);
         })
         .catch((err) => {
           console.error(err);
         });
     },
+    // update isComplete state
+    toggleComplete(data) {
+      // reference document according to id
+      const myDocument = myCollection.where("id", "==", `${data.id}`);
+      myDocument
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            // get document id and update isComplete field
+            return myCollection.doc(doc.id).update({
+              isComplete: data.isComplete,
+            });
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+    // delete item
     deleteTodo(id) {
-      // get document according to id
       const myDocument = myCollection.where("id", "==", `${id}`);
       myDocument
         .get()
         .then((querySnapshot) => {
-          querySnapshot.forEach(function(doc) {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.ref);
             doc.ref.delete();
           });
         })
@@ -72,33 +87,22 @@ export default {
         });
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
-    // moveDown(id) {
-    //   let index = this.todos.findIndex((todo) => todo.id === id);
-    //   if (index < this.todos.length)
-    //     this.todos.splice(index + 1, 0, this.todos.splice(index, 1)[0]);
-    // },
-    // moveUp(id) {
-    //   let index = this.todos.findIndex((todo) => todo.id === id);
-    //   if (index > 0)
-    //     //https://stackoverflow.com/questions/44010959/javascript-change-index-of-array-element
-    //     this.todos.splice(index - 1, 0, this.todos.splice(index, 1)[0]);
-    // },
   },
-  // pull in data from firestore on load
+  // import data
   mounted() {
-    myCollection.get().then((snap) => {
-      const testTodos = [];
-      snap.forEach((doc) => {
-        const data = doc.data();
-        const testTodo = {
-          id: data.id,
-          isComplete: data.isComplete,
-          text: data.text,
-        };
-        testTodos.push(testTodo);
+    myCollection
+      .get()
+      .then((docs) => {
+        const tempTodos = [];
+        docs.forEach((doc) => {
+          const tempTodo = doc.data();
+          tempTodos.push(tempTodo);
+        });
+        this.todos = tempTodos;
+      })
+      .catch((err) => {
+        console.error(err);
       });
-      this.todos = testTodos;
-    });
   },
 };
 </script>
