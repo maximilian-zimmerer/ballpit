@@ -1,5 +1,22 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section class="about">
+    <p>
+      Maximilian Zimmerer is a graphic designer about to enter the final year of
+      my BA in Graphic Communication Design (with Creative Computing) at Central
+      Saint Martins. My interest lies at the intersection of branding and
+      interactivity, and I draw upon the fields of design and computing to
+      creatively solve problems. My past experiences include Mother Design
+      London, where I worked in various design capacities, including animation,
+      branding, and art direction. I am always open to new opportunities and
+      freelance work. If you would like to collaborate on a project or have an
+      enquiry about my work, please reach out.
+    </p>
+  </section>
 </template>
+
+<style scoped>
+.about {
+  height: min-content;
+  border-top: 1px solid white;
+}
+</style>

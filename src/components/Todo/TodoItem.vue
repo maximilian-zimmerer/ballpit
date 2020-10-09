@@ -57,21 +57,11 @@ export default {
   padding-right: 1em;
   /* border: 1px solid yellow; */
 }
-#move-wrapper {
-  gap: 1em;
-  display: flex;
-  flex-direction: row;
-  /* border: 1px solid yellow; */
-}
 #remove {
   cursor: pointer;
   width: min-content;
   justify-self: flex-end;
   /* border: 1px solid yellow; */
-}
-#move-up,
-#move-down {
-  cursor: pointer;
 }
 .isComplete {
   text-decoration: line-through;

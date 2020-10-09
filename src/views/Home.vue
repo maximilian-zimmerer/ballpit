@@ -12,23 +12,10 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import db from "../firebaseInit";
 import Todos from "@/components/Todo/Todos.vue";
 
-// Your web app's Firebase configuration
-const config = {
-  apiKey: "AIzaSyBkwByXhFLBBCt1wVEnoGUC9E-W4-ZOxp0",
-  authDomain: "todo-list-1-900db.firebaseapp.com",
-  databaseURL: "https://todo-list-1-900db.firebaseio.com",
-  projectId: "todo-list-1-900db",
-  storageBucket: "todo-list-1-900db.appspot.com",
-  messagingSenderId: "970542818787",
-  appId: "1:970542818787:web:c82974fb159bfe60a66cd6",
-  measurementId: "G-65ZSMKM1EG",
-};
 // Initialize Firebase
-firebase.initializeApp(config);
-const db = firebase.firestore();
 let myCollection = db.collection("todos");
 export default {
   name: "Home",
@@ -78,7 +65,6 @@ export default {
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            console.log(doc.ref);
             doc.ref.delete();
           });
         })
@@ -110,7 +96,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 100%;
+  height: min-content;
   align-self: flex-start;
 }
 </style>

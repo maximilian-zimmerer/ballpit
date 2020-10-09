@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <!-- force re-render on route change -->
+    <Header :key="$route.fullPath" />
     <router-view />
   </div>
 </template>
+
+<script>
+import Header from "@/components/Layout/Header.vue";
+export default {
+  name: "app",
+  components: {
+    Header,
+  },
+};
+</script>
 
 <style>
 html,
@@ -30,7 +38,6 @@ input {
   width: 100%;
   height: 100%;
   padding: 1em;
-  display: flex;
 }
 canvas {
   width: 100vw !important;
@@ -40,7 +47,7 @@ canvas {
   html,
   body,
   input {
-    font-size: 0.9vw;
+    font-size: 1vw;
   }
 }
 </style>
