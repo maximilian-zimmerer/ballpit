@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="todo-list">
     <Todos
       :todos="todos"
       :currentUser="currentUser"
@@ -20,7 +20,7 @@ import Todos from "@/components/Todo/Todos.vue";
 // Initialize Firebase
 let myCollection = db.collection("todos");
 export default {
-  name: "Home",
+  name: "todo-list",
   components: {
     Todos,
   },
@@ -101,11 +101,11 @@ export default {
 </script>
 
 <style scoped>
-.home {
+.todo-list {
   width: 100%;
   flex-grow: 1;
   overflow: scroll;
   align-self: flex-start;
-  border: 1px solid orange;
+  /* border: 1px solid white; */
 }
 </style>

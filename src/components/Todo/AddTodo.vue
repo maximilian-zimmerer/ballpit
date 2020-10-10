@@ -45,8 +45,8 @@ export default {
 }
 .add-todo input:nth-of-type(1) {
   padding: 1em;
-  border-color: transparent;
   background-color: transparent;
+  border-left: 1px solid white;
   border-bottom: 1px solid white;
 }
 .add-todo input:nth-of-type(2) {
@@ -54,6 +54,7 @@ export default {
   border-color: transparent;
   background-color: transparent;
   border-left: 1px solid white;
+  border-right: 1px solid white;
   border-bottom: 1px solid white;
 }
 input,

@@ -60,9 +60,9 @@ export default {
 <style scoped>
 .header-grid {
   display: grid;
-  margin-top: -1em;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid blue;
+  border-bottom: 1px solid white;
+  /* border: 1px solid blue; */
 }
 .nav {
   gap: 1em;

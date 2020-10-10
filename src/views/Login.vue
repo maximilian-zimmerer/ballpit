@@ -56,14 +56,6 @@ export default {
 .login-form input {
   padding: 1em;
   color: white;
-  cursor: pointer;
-  border-bottom: transparent;
-  background-color: transparent !important;
-  border-top: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-}
-.login-form input:nth-last-of-type(1) {
   border-bottom: 1px solid white;
 }
 </style>

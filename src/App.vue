@@ -37,6 +37,9 @@ select:focus,
 textarea:focus {
   outline: none;
   font-size: 12px;
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -60,7 +63,7 @@ input:-webkit-autofill:active {
 #app {
   width: 100%;
   height: 100%;
-  padding: 1em;
+  padding: 0 1em 1em 1em;
   display: flex;
   overflow: hidden;
   flex-direction: column;

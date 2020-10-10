@@ -44,8 +44,8 @@ export default {
 <style scoped>
 .todos {
   z-index: 1;
-  border-top: 1px solid white;
+  /* border-top: 1px solid white;
   border-right: 1px solid white;
-  border-left: 1px solid white;
+  border-left: 1px solid white; */
 }
 </style>
