@@ -2,22 +2,22 @@
   <section class="header-grid">
     <section class="nav">
       <!-- App Navigation -->
-      <p v-if="isLoggedIn">
+      <span v-if="isLoggedIn">
         <router-link class="link" to="/">List</router-link>
-      </p>
-      <p v-if="isLoggedIn">
+      </span>
+      <span v-if="isLoggedIn">
         <router-link class="link" to="/About">About</router-link>
-      </p>
+      </span>
       <!-- Login/Register -->
-      <p v-if="!isLoggedIn">
+      <span v-if="!isLoggedIn">
         <router-link class="link" to="/Login">Login</router-link>
-      </p>
-      <p v-if="!isLoggedIn">
+      </span>
+      <span v-if="!isLoggedIn">
         <router-link class="link" to="/Register">Register</router-link>
-      </p>
+      </span>
     </section>
     <section class="logout-wrapper">
-      <p v-if="isLoggedIn" class="logout" @click="logout">Logout</p>
+      <span v-if="isLoggedIn" class="logout" @click="logout">Logout</span>
     </section>
   </section>
 </template>
@@ -59,10 +59,10 @@ export default {
 
 <style scoped>
 .header-grid {
-  padding: 0 1em 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 1em;
   border: 1px solid white;
+  grid-template-columns: 1fr 1fr;
 }
 .nav {
   gap: 1em;

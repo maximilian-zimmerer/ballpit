@@ -117,7 +117,9 @@ export default {
   width: 100%;
   flex-grow: 1;
   align-self: flex-start;
-  border: 1px solid white;
   overflow: scroll !important;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 </style>

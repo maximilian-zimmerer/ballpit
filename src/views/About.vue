@@ -1,6 +1,6 @@
 <template>
   <section class="about">
-    <p>
+    <span>
       Maximilian Zimmerer is a graphic designer about to enter the final year of
       my BA in Graphic Communication Design (with Creative Computing) at Central
       Saint Martins. My interest lies at the intersection of branding and
@@ -10,7 +10,7 @@
       branding, and art direction. I am always open to new opportunities and
       freelance work. If you would like to collaborate on a project or have an
       enquiry about my work, please reach out.
-    </p>
+    </span>
   </section>
 </template>
 
