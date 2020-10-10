@@ -103,7 +103,9 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
+  overflow: scroll;
   align-self: flex-start;
+  border: 1px solid orange;
 }
 </style>

@@ -62,6 +62,7 @@ export default {
   display: grid;
   margin-top: -1em;
   grid-template-columns: 1fr 1fr;
+  border: 1px solid blue;
 }
 .nav {
   gap: 1em;

@@ -59,7 +59,11 @@ input:-webkit-autofill:active {
 }
 #app {
   width: 100%;
+  height: 100%;
   padding: 1em;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
 }
 canvas {
   width: 100vw !important;
