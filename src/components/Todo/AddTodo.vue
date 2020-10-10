@@ -47,7 +47,6 @@ export default {
   padding: 1em;
   background-color: transparent;
   border-left: 1px solid white;
-  border-bottom: 1px solid white;
 }
 .add-todo input:nth-of-type(2) {
   cursor: pointer;
@@ -55,7 +54,6 @@ export default {
   background-color: transparent;
   border-left: 1px solid white;
   border-right: 1px solid white;
-  border-bottom: 1px solid white;
 }
 input,
 select,

@@ -48,6 +48,8 @@ export default {
 .login-wrapper {
   width: 100%;
   height: min-content;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 .login-form {
   display: grid;

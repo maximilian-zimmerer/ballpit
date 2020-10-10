@@ -50,6 +50,8 @@ export default {
 .register-wrapper {
   width: 100%;
   height: min-content;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 .register-form {
   display: grid;

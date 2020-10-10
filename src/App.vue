@@ -63,10 +63,10 @@ input:-webkit-autofill:active {
 #app {
   width: 100%;
   height: 100%;
-  padding: 0 1em 1em 1em;
   display: flex;
   overflow: hidden;
   flex-direction: column;
+  padding: 1em 1em 1em 1em;
 }
 canvas {
   width: 100vw !important;

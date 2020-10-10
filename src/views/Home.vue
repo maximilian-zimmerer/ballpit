@@ -1,14 +1,19 @@
 <template>
-  <div class="todo-list">
-    <Todos
-      :todos="todos"
-      :currentUser="currentUser"
-      @newTodo="addTodo($event)"
-      @toggleComplete="toggleComplete($event)"
-      @deleteTodo="deleteTodo($event)"
-      @moveDown="moveDown($event)"
-      @moveUp="moveUp($event)"
-    />
+  <div class="main-wrapper">
+    <div class="todo-add">
+      <AddTodo @newTodo="addTodo($event)" />
+    </div>
+    <div class="todo-list">
+      <Todos
+        :todos="todos"
+        :currentUser="currentUser"
+        @newTodo="addTodo($event)"
+        @toggleComplete="toggleComplete($event)"
+        @deleteTodo="deleteTodo($event)"
+        @moveDown="moveDown($event)"
+        @moveUp="moveUp($event)"
+      />
+    </div>
   </div>
 </template>
 
@@ -16,12 +21,14 @@
 import firebase from "firebase";
 import db from "../firebaseInit";
 import Todos from "@/components/Todo/Todos.vue";
+import AddTodo from "@/components/Todo/AddTodo.vue";
 
 // Initialize Firebase
 let myCollection = db.collection("todos");
 export default {
   name: "todo-list",
   components: {
+    AddTodo,
     Todos,
   },
   data() {
@@ -101,11 +108,16 @@ export default {
 </script>
 
 <style scoped>
+.main-wrapper {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
 .todo-list {
   width: 100%;
   flex-grow: 1;
-  overflow: scroll;
   align-self: flex-start;
-  /* border: 1px solid white; */
+  border: 1px solid white;
+  overflow: scroll !important;
 }
 </style>
