@@ -9,6 +9,9 @@
         placeholder="Password"
       />
       <input type="submit" value="Login" />
+      <section v-if="errorMsg" class="errorMsg">
+        <p>{{ errorMsg }}</p>
+      </section>
     </form>
   </div>
 </template>
@@ -21,6 +24,7 @@ export default {
     return {
       email: "",
       password: "",
+      errorMsg: false,
     };
   },
   methods: {
@@ -28,14 +32,12 @@ export default {
       firebase
         .auth()
         //register new user
-        .signInWithEmailAndPassword(this.email, this.password) 
-        .then((account) => {
-          alert(`You are logged in as ${account.user.email}`);
-          //re-route to homepage
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
           this.$router.push("/");
         })
         .catch((err) => {
-          alert(err);
+          this.errorMsg = err;
         });
     },
   },
@@ -56,7 +58,7 @@ export default {
   color: white;
   cursor: pointer;
   border-bottom: transparent;
-  background-color: transparent;
+  background-color: transparent !important;
   border-top: 1px solid white;
   border-left: 1px solid white;
   border-right: 1px solid white;

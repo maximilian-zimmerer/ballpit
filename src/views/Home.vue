@@ -2,6 +2,7 @@
   <div class="home">
     <Todos
       :todos="todos"
+      :currentUser="currentUser"
       @newTodo="addTodo($event)"
       @toggleComplete="toggleComplete($event)"
       @deleteTodo="deleteTodo($event)"
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 import db from "../firebaseInit";
 import Todos from "@/components/Todo/Todos.vue";
 
@@ -25,10 +27,11 @@ export default {
   data() {
     return {
       todos: [],
+      currentUser: false,
     };
   },
   methods: {
-    // add item
+    // add item to database
     addTodo(newTodo) {
       myCollection
         .doc()
@@ -74,6 +77,10 @@ export default {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },
+  // get current user
+  created() {
+    this.currentUser = firebase.auth().currentUser;
+  },
   // import data
   mounted() {
     myCollection
@@ -96,7 +103,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: min-content;
+  height: 100%;
   align-self: flex-start;
 }
 </style>

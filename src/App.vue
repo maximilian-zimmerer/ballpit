@@ -28,15 +28,37 @@ body {
   background: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-input {
-  font-size: 12px;
-}
 * {
   box-sizing: border-box;
 }
+input,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  font-size: 12px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  box-shadow: 0 0 0 30px black inset !important;
+}
+.errorMsg {
+  width: 100%;
+  padding: 0 1em 0;
+  text-align: center;
+  height: min-content;
+}
+.errorMsg p {
+  color: orange;
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
 #app {
   width: 100%;
-  height: 100%;
   padding: 1em;
 }
 canvas {
@@ -46,7 +68,10 @@ canvas {
 @media (min-width: 769px) {
   html,
   body,
-  input {
+  input,
+  input:focus,
+  select:focus,
+  textarea:focus {
     font-size: 1vw;
   }
 }

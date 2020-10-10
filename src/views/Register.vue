@@ -9,6 +9,9 @@
         placeholder="Password"
       />
       <input type="submit" value="Register" />
+      <section v-if="errorMsg" class="errorMsg">
+        <p>{{ errorMsg }}</p>
+      </section>
     </form>
   </div>
 </template>
@@ -21,6 +24,7 @@ export default {
     return {
       email: "",
       password: "",
+      errorMsg: false,
     };
   },
   methods: {
@@ -35,7 +39,7 @@ export default {
           this.$router.push("/");
         })
         .catch((err) => {
-          alert(err);
+          this.errorMsg = err;
         });
     },
   },

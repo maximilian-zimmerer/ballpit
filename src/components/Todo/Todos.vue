@@ -1,29 +1,28 @@
 <template>
   <div class="todos">
-    <!-- <TodoCanvas /> -->
     <AddTodo @newTodo="newTodo($event)" />
     <div class="todo-items" v-for="todo in todos" :key="todo.id">
+      <!-- ony show todo items with same uid as the logged in user -->
       <TodoItem
         :todo="todo"
-        @toggleComplete="toggleComplete($event)"
+        v-if="userFilter(todo)"
         @deleteTodo="deleteTodo($event)"
+        @toggleComplete="toggleComplete($event)"
       />
     </div>
   </div>
 </template>
 
 <script>
-// import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
 import TodoItem from "@/components/Todo/TodoItem.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
 export default {
   name: "Todos",
   components: {
-    // TodoCanvas,
     TodoItem,
     AddTodo,
   },
-  props: ["todos"],
+  props: ["todos", "currentUser"],
   methods: {
     newTodo(newTodo) {
       this.$emit("newTodo", newTodo);
@@ -33,6 +32,10 @@ export default {
     },
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
+    },
+    // ony show todo items with same uid as the logged in user
+    userFilter(todo) {
+      return todo.uid == this.currentUser.uid;
     },
   },
 };

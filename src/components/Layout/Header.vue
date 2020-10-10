@@ -8,7 +8,6 @@
       <p v-if="isLoggedIn">
         <router-link class="link" to="/About">About</router-link>
       </p>
-      <p v-if="isLoggedIn" class="link" @click="logout">Logout</p>
       <!-- Login/Register -->
       <p v-if="!isLoggedIn">
         <router-link class="link" to="/Login">Login</router-link>
@@ -17,8 +16,8 @@
         <router-link class="link" to="/Register">Register</router-link>
       </p>
     </section>
-    <section class="date">
-      <p>©2020</p>
+    <section class="logout-wrapper">
+      <p v-if="isLoggedIn" class="logout" @click="logout">Logout</p>
     </section>
   </section>
 </template>
@@ -39,7 +38,6 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          alert("Signed Out");
           this.$router.push("/Login");
           this.isLoggedIn = false;
         });
@@ -49,8 +47,12 @@ export default {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser;
-      console.log(this.currentUser);
     }
+  },
+  computed: {
+    matchRoute() {
+      return this.$route.name.name;
+    },
   },
 };
 </script>
@@ -63,15 +65,23 @@ export default {
 }
 .nav {
   gap: 1em;
-  width: 100%;
   display: flex;
   height: fit-content;
 }
 .link {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
-.date {
-  text-align: right;
+.logout-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.logout {
+  color: white;
+  cursor: pointer;
+}
+.currentRoute {
+  text-decoration: underline;
 }
 </style>

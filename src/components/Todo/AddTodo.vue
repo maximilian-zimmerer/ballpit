@@ -8,22 +8,32 @@
 </template>
 
 <script>
+import firebase from "firebase";
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "AddTodo",
   data() {
     return {
       title: "",
+      currentUser: false,
     };
   },
   methods: {
     newTodo() {
       if (this.title != "") {
-        let newTodo = { id: uuidv4(), isComplete: false, text: this.title };
+        let newTodo = {
+          uid: this.currentUser.uid,
+          id: uuidv4(),
+          isComplete: false,
+          text: this.title,
+        };
         this.$emit("newTodo", newTodo);
       }
       this.title = "";
     },
+  },
+  created() {
+    this.currentUser = firebase.auth().currentUser;
   },
 };
 </script>
