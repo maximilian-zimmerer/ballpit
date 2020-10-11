@@ -61,7 +61,7 @@ export default {
 .header-grid {
   display: grid;
   padding: 1em;
-  border: 1px solid white;
+  border-bottom: 1px solid black;
   grid-template-columns: 1fr 1fr;
 }
 .nav {
@@ -70,7 +70,7 @@ export default {
   height: fit-content;
 }
 .link {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .logout-wrapper {
@@ -79,7 +79,7 @@ export default {
   justify-content: flex-end;
 }
 .logout {
-  color: white;
+  color: black;
   cursor: pointer;
 }
 .currentRoute {

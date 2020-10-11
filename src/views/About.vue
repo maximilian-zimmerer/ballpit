@@ -19,8 +19,8 @@
   /* height: 100%; */
   padding: 1em;
   height: min-content;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  border-bottom: 1px solid white;
+  /* border-left: 1px solid black;
+  border-right: 1px solid black; */
+  border-bottom: 1px solid black;
 }
 </style>

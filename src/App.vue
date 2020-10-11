@@ -23,9 +23,9 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  color: white;
+  color: black;
   font-size: 12px;
-  background: black;
+  background: grey;
   font-family: Arial, Helvetica, sans-serif;
 }
 * {
@@ -45,9 +45,12 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-text-fill-color: white !important;
-  -webkit-box-shadow: 0 0 0 30px black inset !important;
-  box-shadow: 0 0 0 30px black inset !important;
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0 30px grey inset !important;
+  box-shadow: 0 0 0 30px grey inset !important;
+}
+::placeholder {
+  color: black;
 }
 .errorMsg {
   width: 100%;
@@ -56,9 +59,9 @@ input:-webkit-autofill:active {
   height: min-content;
 }
 .errorMsg p {
-  color: orange;
+  color: yellow;
   text-decoration: underline;
-  text-decoration-color: orange;
+  text-decoration-color: yellow;
 }
 #app {
   width: 100%;
@@ -66,10 +69,10 @@ input:-webkit-autofill:active {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  padding: 1em 1em 1em 1em;
+  /* padding: 1em 1em 1em 1em; */
 }
 canvas {
-  mix-blend-mode: difference;
+  z-index: 0;
   background: transparent !important;
 }
 @media (min-width: 769px) {

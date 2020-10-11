@@ -50,8 +50,6 @@ export default {
 .register-wrapper {
   width: 100%;
   height: min-content;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
 }
 .register-form {
   display: grid;
@@ -59,8 +57,8 @@ export default {
 }
 .register-form input {
   padding: 1em;
-  color: white;
-  border-bottom: 1px solid white;
+  color: black;
+  border-bottom: 1px solid black;
 }
 .register-wrapper div {
   width: 100%;

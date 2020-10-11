@@ -36,5 +36,6 @@ export default {
 <style scoped>
 .todos {
   z-index: 1;
+  border-bottom: 1px solid black;
 }
 </style>

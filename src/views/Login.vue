@@ -48,8 +48,6 @@ export default {
 .login-wrapper {
   width: 100%;
   height: min-content;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
 }
 .login-form {
   display: grid;
@@ -57,7 +55,7 @@ export default {
 }
 .login-form input {
   padding: 1em;
-  color: white;
-  border-bottom: 1px solid white;
+  color: black;
+  border-bottom: 1px solid black;
 }
 </style>

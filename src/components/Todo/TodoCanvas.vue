@@ -13,21 +13,22 @@ export default {
     };
   },
   mounted() {
+    // ---------------------------------------------------------- Variables
     let canvas = document.getElementById("canvas-wrapper");
     let myHeight = document.documentElement.clientHeight;
     let myWidth = document.documentElement.clientWidth;
     let scaleWall = 4;
-    let wallWidth = 40;
+    let wallWidth = 5000;
     let wallOffset = wallWidth / 2;
     // declare vars
     let Engine = Matter.Engine,
       World = Matter.World,
       Render = Matter.Render,
       Bodies = Matter.Bodies;
-
+    // init engine
     let engine = Engine.create(),
       world = engine.world;
-
+    // init render
     let render = Render.create({
       canvas: canvas,
       engine: engine,
@@ -37,11 +38,12 @@ export default {
         wireframes: false,
       },
     });
-    // init env
+    // init environment
     World.add(world, []);
     Engine.run(engine);
     Render.run(render);
-    // wall class
+
+    // ---------------------------------------------------------- Classes
     class Rect {
       constructor(x, y, width, height) {
         let options = {
@@ -84,16 +86,22 @@ export default {
       myWidth * scaleWall,
       wallWidth
     );
-    // new circle
     const addCircle = () => {
-      return Bodies.circle(myWidth / 2, myHeight / 2, 50, {
-        render: {
-          fillStyle: "white",
-        },
-      });
+      return Bodies.circle(
+        myWidth / 2,
+        myHeight / 2,
+        Math.floor(Math.random() * 40) + 20,
+        {
+          render: {
+            fillStyle: "yellow",
+          },
+        }
+      );
     };
+
+    // ---------------------------------------------------------- Methods
     setTimeout(() => {
-      // add circles
+      // add circles on load
       if (this.todos.length > 0) {
         for (let i = 0; i < this.todos.length - 1; i++) {
           World.add(engine.world, addCircle());
@@ -103,7 +111,6 @@ export default {
     }, 500);
     // resize event
     window.onresize = () => {
-      console.log("resize");
       myWidth = document.documentElement.clientWidth;
       myHeight = document.documentElement.clientHeight;
       above.rePosition(myWidth / 2, -wallOffset);
@@ -113,14 +120,12 @@ export default {
       render.canvas.width = document.documentElement.clientWidth;
       render.canvas.height = document.documentElement.clientHeight;
     };
-    // event listener
+    // todo event listener
     setInterval(() => {
       if (this.oldVal < this.todos.length) {
-        console.log("added circle");
         this.oldVal = this.todos.length;
         World.add(engine.world, addCircle());
       } else if (this.oldVal > this.todos.length) {
-        console.log("removed circle");
         this.oldVal = this.todos.length;
         if (world.bodies.length > 3) {
           Matter.Composite.remove(world, world.bodies[4]);
@@ -135,7 +140,6 @@ export default {
 #canvas-wrapper {
   top: 0;
   left: 0;
-  z-index: 0;
   width: 100vw;
   height: 100vh;
   position: absolute;

@@ -46,19 +46,17 @@ export default {
 .add-todo input:nth-of-type(1) {
   padding: 1em;
   background-color: transparent;
-  border-left: 1px solid white;
+  border-right: 1px solid black;
 }
 .add-todo input:nth-of-type(2) {
   cursor: pointer;
   border-color: transparent;
   background-color: transparent;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
 }
 input,
 select,
 textarea {
-  color: white;
+  color: black;
 }
 input:focus {
   outline: none;

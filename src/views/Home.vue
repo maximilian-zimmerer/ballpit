@@ -4,7 +4,7 @@
     <div class="todo-add">
       <AddTodo @newTodo="addTodo($event)" />
     </div>
-    <div class="todo-list">
+    <div v-if="emptyList" class="todo-list">
       <Todos
         :todos="todos"
         :currentUser="currentUser"
@@ -14,6 +14,9 @@
         @moveDown="moveDown($event)"
         @moveUp="moveUp($event)"
       />
+    </div>
+    <div v-if="!emptyList" class="start-typing">
+      <span>Don't you have something to do?</span>
     </div>
   </div>
 </template>
@@ -87,6 +90,11 @@ export default {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },
+  computed: {
+    emptyList() {
+      return this.todos.length;
+    },
+  },
   // get current user
   created() {
     this.currentUser = firebase.auth().currentUser;
@@ -120,11 +128,16 @@ export default {
 }
 .todo-list {
   width: 100%;
+  z-index: 1;
   flex-grow: 1;
-  align-self: flex-start;
   overflow: scroll !important;
-  border-top: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+}
+.start-typing {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
 }
 </style>
