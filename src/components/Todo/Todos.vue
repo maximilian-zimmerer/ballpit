@@ -4,7 +4,6 @@
       <!-- ony show todo items with same uid as the logged in user -->
       <TodoItem
         :todo="todo"
-        v-if="userFilter(todo)"
         @deleteTodo="deleteTodo($event)"
         @toggleComplete="toggleComplete($event)"
       />
@@ -29,10 +28,6 @@ export default {
     },
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
-    },
-    // ony show todo items with same uid as the logged in user
-    userFilter(todo) {
-      return todo.uid == this.currentUser.uid;
     },
   },
 };

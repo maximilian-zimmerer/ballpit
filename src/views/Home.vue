@@ -1,5 +1,6 @@
 <template>
   <div class="main-wrapper">
+    <TodoCanvas :todos="todos" />
     <div class="todo-add">
       <AddTodo @newTodo="addTodo($event)" />
     </div>
@@ -22,12 +23,14 @@ import firebase from "firebase";
 import db from "../firebaseInit";
 import Todos from "@/components/Todo/Todos.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
+import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
 
 // Initialize Firebase
 let myCollection = db.collection("todos");
 export default {
   name: "todo-list",
   components: {
+    TodoCanvas,
     AddTodo,
     Todos,
   },
@@ -98,7 +101,9 @@ export default {
           const tempTodo = doc.data();
           tempTodos.push(tempTodo);
         });
-        this.todos = tempTodos;
+        this.todos = tempTodos.filter(
+          (tempTodo) => tempTodo.uid == this.currentUser.uid
+        );
       })
       .catch((err) => {
         console.error(err);

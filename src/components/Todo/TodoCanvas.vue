@@ -1,48 +1,132 @@
 <template>
-  <div id="canvas-wrapper">
-    <vue-p5
-      @setup="setup"
-      @draw="draw"
-      @mousemoved="mouseMoved"
-      @windowresized="windowResized"
-    >
-    </vue-p5>
-  </div>
+  <canvas id="canvas-wrapper"></canvas>
 </template>
 
 <script>
-import VueP5 from "vue-p5";
+import Matter from "matter-js";
 export default {
-  name: "p5-example",
-  components: {
-    "vue-p5": VueP5,
+  name: "todoCanvas",
+  props: ["todos"],
+  data() {
+    return {
+      oldVal: false,
+    };
   },
-  data: () => ({
-    lines: [],
-    canvas: 0,
-    wrapper: document.getElementById("canvas-wrapper"),
-  }),
-  computed: {},
-  methods: {
-    setup(sketch) {
-      this.canvas = sketch.createCanvas(window.innerWidth, window.innerHeight);
-      //   sketch.background(255, 100);
-    },
-    draw(sketch) {
-      for (let line of this.lines) {
-        sketch.stroke(line.color);
-        sketch.line(line.pmouseX, line.pmouseY, line.mouseX, line.mouseY);
+  mounted() {
+    let canvas = document.getElementById("canvas-wrapper");
+    let myHeight = document.documentElement.clientHeight;
+    let myWidth = document.documentElement.clientWidth;
+    let scaleWall = 4;
+    let wallWidth = 40;
+    let wallOffset = wallWidth / 2;
+    // declare vars
+    let Engine = Matter.Engine,
+      World = Matter.World,
+      Render = Matter.Render,
+      Bodies = Matter.Bodies;
+
+    let engine = Engine.create(),
+      world = engine.world;
+
+    let render = Render.create({
+      canvas: canvas,
+      engine: engine,
+      options: {
+        width: myWidth,
+        height: myHeight,
+        wireframes: false,
+      },
+    });
+    // init env
+    World.add(world, []);
+    Engine.run(engine);
+    Render.run(render);
+    // wall class
+    class Rect {
+      constructor(x, y, width, height) {
+        let options = {
+          isStatic: true,
+        };
+        this.w = width;
+        this.h = height;
+        this.body = Bodies.rectangle(x, y, this.w, this.h, options);
+        World.add(world, this.body);
       }
-    },
-    mouseMoved({ mouseX, mouseY, pmouseX, pmouseY }) {
-      this.pushLine({ mouseX, mouseY, pmouseX, pmouseY, color: 255 });
-    },
-    windowResized() {},
-    pushLine(line) {
-      let lines = this.lines;
-      lines.push(line);
-      this.lines = lines.slice(-100);
-    },
+      rePosition(x, y) {
+        Matter.Body.setPosition(this.body, {
+          x: x,
+          y: y,
+        });
+      }
+    }
+    // create walls
+    let above = new Rect(
+      myWidth / 2,
+      -wallOffset,
+      myWidth * scaleWall,
+      wallWidth
+    );
+    let left = new Rect(
+      -wallOffset,
+      myHeight / 2,
+      wallWidth,
+      myHeight * scaleWall
+    );
+    let right = new Rect(
+      myWidth + wallOffset,
+      myHeight / 2,
+      wallWidth,
+      myHeight * scaleWall
+    );
+    let bottom = new Rect(
+      myWidth / 2,
+      myHeight + wallOffset,
+      myWidth * scaleWall,
+      wallWidth
+    );
+    // new circle
+    const addCircle = () => {
+      return Bodies.circle(myWidth / 2, myHeight / 2, 50, {
+        render: {
+          fillStyle: "white",
+        },
+      });
+    };
+    setTimeout(() => {
+      // add circles
+      if (this.todos.length > 0) {
+        for (let i = 0; i < this.todos.length - 1; i++) {
+          World.add(engine.world, addCircle());
+          this.oldVal = this.todos.length;
+        }
+      }
+    }, 500);
+    // resize event
+    window.onresize = () => {
+      console.log("resize");
+      myWidth = document.documentElement.clientWidth;
+      myHeight = document.documentElement.clientHeight;
+      above.rePosition(myWidth / 2, -wallOffset);
+      left.rePosition(-wallOffset, myHeight / 2);
+      right.rePosition(myWidth + wallOffset, myHeight / 2);
+      bottom.rePosition(myWidth / 2, myHeight + wallOffset);
+      render.canvas.width = document.documentElement.clientWidth;
+      render.canvas.height = document.documentElement.clientHeight;
+    };
+    // event listener
+    setInterval(() => {
+      if (this.oldVal < this.todos.length) {
+        console.log("added circle");
+        this.oldVal = this.todos.length;
+        World.add(engine.world, addCircle());
+      } else if (this.oldVal > this.todos.length) {
+        console.log("removed circle");
+        this.oldVal = this.todos.length;
+        if (world.bodies.length > 3) {
+          Matter.Composite.remove(world, world.bodies[4]);
+        }
+      }
+    }, 100);
   },
 };
 </script>
@@ -56,6 +140,5 @@ export default {
   height: 100vh;
   position: absolute;
   pointer-events: none;
-  /* border: 1px solid black; */
 }
 </style>

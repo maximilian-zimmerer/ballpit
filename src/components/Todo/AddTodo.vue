@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-todo-wrapper">
     <form class="add-todo" v-on:submit.prevent="newTodo">
       <input type="text" placeholder="New Todo..." v-model="title" />
       <input type="submit" value="Add" />

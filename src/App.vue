@@ -69,8 +69,8 @@ input:-webkit-autofill:active {
   padding: 1em 1em 1em 1em;
 }
 canvas {
-  width: 100vw !important;
-  height: 100vh !important;
+  mix-blend-mode: difference;
+  background: transparent !important;
 }
 @media (min-width: 769px) {
   html,
