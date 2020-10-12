@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+.add-todo-wrapper {
+  z-index: 1;
+}
 .add-todo {
   display: grid;
   grid-template-columns: 5fr 1fr;

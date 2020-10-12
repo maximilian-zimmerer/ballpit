@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <transition name="fade" mode="out-in">
+    <transition name="fade">
       <div v-if="emptyList" class="todo-canvas">
         <TodoCanvas :todos="todos" />
       </div>
@@ -8,7 +8,7 @@
     <div class="todo-add">
       <AddTodo @newTodo="addTodo($event)" />
     </div>
-    <transition name="fade" mode="out-in">
+    <transition name="fade-right">
       <div v-if="emptyList" class="todo-list">
         <Todos
           :todos="todos"
@@ -21,7 +21,7 @@
         />
       </div>
     </transition>
-    <transition name="fade" mode="out-in">
+    <transition name="fade">
       <div v-if="!emptyList" class="start-typing">
         <span>Don't you have something to do?</span>
       </div>

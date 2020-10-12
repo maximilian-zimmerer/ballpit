@@ -89,14 +89,24 @@ canvas {
   background: transparent !important;
 }
 /* transition */
-.fade-enter {
+/* fade */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
-.fade-enter-active {
-  transition: opacity 0.2s ease-in-out;
+/* fade-right */
+.fade-right-enter-active, 
+.fade-right-leave-active {
+  transition: 0.2s ease-in-out;
 }
-.fade-leave-active {
-  transition: opacity 0.2s ease-in-out;
+.fade-right-enter {
+  transform: translateX(-20px);
+  opacity: 0;
+} 
+.fade-right-leave-to {
+  transform: translateX(20px);
   opacity: 0;
 }
 

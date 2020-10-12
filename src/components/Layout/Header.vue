@@ -59,8 +59,9 @@ export default {
 
 <style scoped>
 .header-grid {
-  display: grid;
+  z-index: 1;
   padding: 1em;
+  display: grid;
   border-bottom: 1px solid white;
   grid-template-columns: 1fr 1fr;
 }

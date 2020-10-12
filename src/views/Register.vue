@@ -9,7 +9,7 @@
         placeholder="Password"
       />
       <input type="submit" value="Register" />
-      <transition name="fade" mode="out-in">
+      <transition name="fade-right">
         <section v-if="errorMsg" class="errorMsg">
           <p>{{ errorMsg }}</p>
         </section>

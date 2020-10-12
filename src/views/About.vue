@@ -16,11 +16,8 @@
 
 <style scoped>
 .about {
-  /* height: 100%; */
   padding: 1em;
   height: min-content;
-  /* border-left: 1px solid white;
-  border-right: 1px solid white; */
   border-bottom: 1px solid white;
 }
 </style>

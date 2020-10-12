@@ -10,26 +10,19 @@ export default {
   data() {
     return {
       oldVal: false,
-      // canvas: document.getElementById("canvas-wrapper"),
-      // portrait: window.matchMedia("(orientation: portrait)"),
-      // small_devices: window.matchMedia("(max-width: 767px)"),
-      scaleWall: 4,
-      wallWidth: 5000,
-      myHeight: document.documentElement.clientHeight,
-      myWidth: document.documentElement.clientWidth,
     };
   },
-  computed: {
-    // radius() {},
-  },
+  computed: {},
   mounted() {
     // ---------------------------------------------------------- Variables
     const canvas = document.getElementById("canvas-wrapper");
-    // let myHeight = document.documentElement.clientHeight;
-    // let myWidth = document.documentElement.clientWidth;
-    // let scaleWall = 4;
-    // let wallWidth = 5000;
-    let wallOffset = this.wallWidth / 2;
+    const smallDevices = window.matchMedia("(max-width: 767px)");
+    // const portrait = window.matchMedia("(orientation: portrait)");
+    let myHeight = document.documentElement.clientHeight;
+    let myWidth = document.documentElement.clientWidth;
+    let scaleWall = 4;
+    let wallWidth = 5000;
+    let wallOffset = wallWidth / 2;
     // declare vars
     let Engine = Matter.Engine,
       World = Matter.World,
@@ -43,8 +36,8 @@ export default {
       canvas: canvas,
       engine: engine,
       options: {
-        width: this.myWidth,
-        height: this.myHeight,
+        width: myWidth,
+        height: myHeight,
         wireframes: false,
       },
     });
@@ -72,33 +65,33 @@ export default {
       }
     }
     // create walls
-    let above = new Rect(
-      this.myWidth / 2,
-      -wallOffset,
-      this.myWidth * this.scaleWall,
-      this.wallWidth
-    );
+    // let above = new Rect(
+    //   myWidth / 2,
+    //   -wallOffset,
+    //   myWidth * scaleWall,
+    //   wallWidth
+    // );
     let left = new Rect(
       -wallOffset,
-      this.myHeight / 2,
-      this.wallWidth,
-      this.myHeight * this.scaleWall
+      myHeight / 2,
+      wallWidth,
+      myHeight * scaleWall
     );
     let right = new Rect(
-      this.myWidth + wallOffset,
-      this.myHeight / 2,
-      this.wallWidth,
-      this.myHeight * this.scaleWall
+      myWidth + wallOffset,
+      myHeight / 2,
+      wallWidth,
+      myHeight * scaleWall
     );
     let bottom = new Rect(
-      this.myWidth / 2,
-      this.myHeight + wallOffset,
-      this.myWidth * this.scaleWall,
-      this.wallWidth
+      myWidth / 2,
+      myHeight + wallOffset,
+      myWidth * scaleWall,
+      wallWidth
     );
     // create circles
     let addCircle = () => {
-      return Bodies.circle(this.myWidth / 2, this.myHeight / 2, 50, {
+      return Bodies.circle(myWidth / 2, myHeight / 2, setRadius(), {
         render: {
           fillStyle: "grey",
         },
@@ -118,12 +111,12 @@ export default {
 
     // resize event
     window.onresize = () => {
-      this.myWidth = document.documentElement.clientWidth;
-      this.myHeight = document.documentElement.clientHeight;
-      above.rePosition(this.myWidth / 2, -wallOffset);
-      left.rePosition(-wallOffset, this.myHeight / 2);
-      right.rePosition(this.myWidth + wallOffset, this.myHeight / 2);
-      bottom.rePosition(this.myWidth / 2, this.myHeight + wallOffset);
+      myWidth = document.documentElement.clientWidth;
+      myHeight = document.documentElement.clientHeight;
+      // above.rePosition(myWidth / 2, -wallOffset);
+      left.rePosition(-wallOffset, myHeight / 2);
+      right.rePosition(myWidth + wallOffset, myHeight / 2);
+      bottom.rePosition(myWidth / 2, myHeight + wallOffset);
       render.canvas.width = document.documentElement.clientWidth;
       render.canvas.height = document.documentElement.clientHeight;
     };
@@ -139,17 +132,14 @@ export default {
         }
       }
     }, 100);
-    // // dynamic ball size
-    // function setRadius() {
-    //   let radius;
-    //   let factor = small_devices.matches
-    //     ? Math.floor(Math.random() * 0.05) + 0.1
-    //     : Math.floor(Math.random() * 0.1) + 0.15;
-    //   portrait.matches
-    //     ? (radius = this.myWidth * factor)
-    //     : (radius = this.myHeight * factor);
-    //   return radius;
-    // }
+    // dynamic ball size
+    function setRadius() {
+      let radius;
+      smallDevices.matches
+        ? (radius = Math.floor(Math.random() * 50) + 30)
+        : (radius = Math.floor(Math.random() * 100) + 60);
+      return radius;
+    }
   },
 };
 </script>

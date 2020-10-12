@@ -1,6 +1,6 @@
 <template>
   <div class="todos">
-    <transition-group name="fade" mode="out-in" tag="div">
+    <transition-group name="fade-right" tag="div">
       <div class="todo-items" v-for="todo in todos" :key="todo.id">
         <!-- ony show todo items with same uid as the logged in user -->
         <TodoItem
