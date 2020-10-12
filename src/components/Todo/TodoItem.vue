@@ -41,12 +41,20 @@ export default {
 <style scoped>
 #todo-item {
   display: grid;
+  /* border-radius: 10px; */
   word-break: break-all;
   /* backdrop-filter: blur(5px); */
   padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
+  /* background-image: linear-gradient(
+    to right,
+    #111111,
+    transparent,
+    transparent,
+    transparent,
+    #111111
+  ); */
   grid-template-columns: 0.5fr 4.5fr 0.5fr;
-  /* grid-template-columns: 0.5fr 4.5fr 0.5fr 0.5fr; */
 }
 #complete {
   cursor: pointer;

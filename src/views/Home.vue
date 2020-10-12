@@ -37,7 +37,8 @@ import AddTodo from "@/components/Todo/AddTodo.vue";
 import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
 
 // Initialize Firebase
-let myCollection = db.collection("todos");
+const FBtodos = db.collection("todos");
+const FBcounter = db.collection("counter");
 export default {
   name: "todo-list",
   components: {
@@ -54,8 +55,7 @@ export default {
   methods: {
     // add item to database
     addTodo(newTodo) {
-      myCollection
-        .doc()
+      FBtodos.doc()
         .set(newTodo)
         .then(() => {
           this.todos.push(newTodo);
@@ -67,13 +67,13 @@ export default {
     // update isComplete state
     toggleComplete(data) {
       // reference document according to id
-      const myDocument = myCollection.where("id", "==", `${data.id}`);
-      myDocument
+      const myTodos = FBtodos.where("id", "==", `${data.id}`);
+      myTodos
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             // get document id and update isComplete field
-            return myCollection.doc(doc.id).update({
+            return FBtodos.doc(doc.id).update({
               isComplete: data.isComplete,
             });
           });
@@ -84,13 +84,29 @@ export default {
     },
     // delete item
     deleteTodo(id) {
-      const myDocument = myCollection.where("id", "==", `${id}`);
-      myDocument
+      // delete item from todos
+      const myTodos = FBtodos.where("id", "==", `${id}`);
+      myTodos.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete();
+        });
+      });
+      // increment completed todos counter
+      FBcounter.doc(`${this.currentUser.uid}`)
         .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            doc.ref.delete();
-          });
+        .then((doc) => {
+          // document with UID exists -> increment count by 1
+          if (doc.exists) {
+            FBcounter.doc(`${this.currentUser.uid}`).update({
+              counter: firebase.firestore.FieldValue.increment(1),
+            });
+            // document with UID doesn't exists -> create new document and set count to 1
+          } else if (!doc.exists) {
+            console.log("Created new document!");
+            FBcounter.doc(`${this.currentUser.uid}`).set({
+              counter: 1,
+            });
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -109,8 +125,7 @@ export default {
   },
   // import data
   mounted() {
-    myCollection
-      .get()
+    FBtodos.get()
       .then((docs) => {
         const tempTodos = [];
         docs.forEach((doc) => {
@@ -133,6 +148,9 @@ export default {
   display: flex;
   overflow: hidden;
   flex-direction: column;
+}
+.todo-add {
+  z-index: 1;
 }
 .todo-list {
   z-index: 0;

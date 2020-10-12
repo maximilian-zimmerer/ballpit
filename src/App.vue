@@ -54,13 +54,13 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px black inset !important;
-  box-shadow: 0 0 0 30px black inset !important;
-  -webkit-text-fill-color: white !important;
-  border-bottom: 1px solid black;
-  border-right: none !important;
-  border-left: none !important;
   border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid black;
+  -webkit-text-fill-color: white !important;
+  box-shadow: 0 0 0 30px black inset !important;
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
 }
 ::placeholder {
   color: white;
@@ -90,24 +90,26 @@ canvas {
 }
 /* transition */
 /* fade */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.2s ease-in-out;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 /* fade-right */
-.fade-right-enter-active, 
+.fade-right-enter-active,
 .fade-right-leave-active {
   transition: 0.2s ease-in-out;
 }
 .fade-right-enter {
+  opacity: 0;
   transform: translateX(-20px);
-  opacity: 0;
-} 
+}
 .fade-right-leave-to {
-  transform: translateX(20px);
   opacity: 0;
+  transform: translateX(20px);
 }
 
 @media (min-width: 769px) {
@@ -117,7 +119,7 @@ canvas {
   input:focus,
   select:focus,
   textarea:focus {
-    font-size: 1vw;
+    font-size: 1.2vw;
   }
 }
 </style>

@@ -26,8 +26,9 @@ export default {
     // declare vars
     let Engine = Matter.Engine,
       World = Matter.World,
-      Render = Matter.Render,
-      Bodies = Matter.Bodies;
+      Bodies = Matter.Bodies,
+      Render = Matter.Render;
+
     // init engine
     let engine = Engine.create(),
       world = engine.world;
@@ -41,6 +42,7 @@ export default {
         wireframes: false,
       },
     });
+
     // init environment
     World.add(world, []);
     Engine.run(engine);
@@ -92,8 +94,10 @@ export default {
     // create circles
     let addCircle = () => {
       return Bodies.circle(myWidth / 2, myHeight / 2, setRadius(), {
+        restitution: 0.6,
+        friction: 0.3,
         render: {
-          fillStyle: "grey",
+          fillStyle: "#222222",
         },
       });
     };
@@ -132,12 +136,13 @@ export default {
         }
       }
     }, 100);
+
     // dynamic ball size
     function setRadius() {
       let radius;
       smallDevices.matches
-        ? (radius = Math.floor(Math.random() * 50) + 30)
-        : (radius = Math.floor(Math.random() * 100) + 60);
+        ? (radius = Math.floor(Math.random() * 60) + 40)
+        : (radius = Math.floor(Math.random() * 120) + 80);
       return radius;
     }
   },

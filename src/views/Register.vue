@@ -35,8 +35,9 @@ export default {
         .auth()
         //register new user
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((account) => {
-          alert(`Created an account as ${account.user.email}`);
+        // .then((account) => {
+        .then(() => {
+          // alert(`Created an account as ${account.user.email}`);
           //re-route to homepage
           this.$router.push("/");
         })

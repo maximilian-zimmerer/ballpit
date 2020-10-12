@@ -6,7 +6,7 @@
         <router-link class="link" to="/">List</router-link>
       </span>
       <span v-if="isLoggedIn">
-        <router-link class="link" to="/About">About</router-link>
+        <router-link class="link" to="/About">Info</router-link>
       </span>
       <!-- Login/Register -->
       <span v-if="!isLoggedIn">
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      currentUser: false,
     };
   },
   methods: {
@@ -46,7 +45,6 @@ export default {
   created() {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
-      this.currentUser = firebase.auth().currentUser;
     }
   },
   computed: {
