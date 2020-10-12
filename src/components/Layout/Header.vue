@@ -61,16 +61,16 @@ export default {
 .header-grid {
   display: grid;
   padding: 1em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   grid-template-columns: 1fr 1fr;
 }
 .nav {
-  gap: 1em;
   display: flex;
   height: fit-content;
 }
 .link {
-  color: black;
+  color: white;
+  padding-right: 1em;
   text-decoration: none;
 }
 .logout-wrapper {
@@ -79,10 +79,10 @@ export default {
   justify-content: flex-end;
 }
 .logout {
-  color: black;
+  color: white;
   cursor: pointer;
 }
-.currentRoute {
+.router-link-exact-active {
   text-decoration: underline;
 }
 </style>

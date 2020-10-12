@@ -9,9 +9,11 @@
         placeholder="Password"
       />
       <input type="submit" value="Register" />
-      <section v-if="errorMsg" class="errorMsg">
-        <p>{{ errorMsg }}</p>
-      </section>
+      <transition name="fade" mode="out-in">
+        <section v-if="errorMsg" class="errorMsg">
+          <p>{{ errorMsg }}</p>
+        </section>
+      </transition>
     </form>
   </div>
 </template>
@@ -57,8 +59,8 @@ export default {
 }
 .register-form input {
   padding: 1em;
-  color: black;
-  border-bottom: 1px solid black;
+  color: white;
+  border-bottom: 1px solid white;
 }
 .register-wrapper div {
   width: 100%;

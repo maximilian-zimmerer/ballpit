@@ -42,11 +42,12 @@ export default {
 .add-todo {
   display: grid;
   grid-template-columns: 5fr 1fr;
+  border-bottom: 1px solid white;
 }
 .add-todo input:nth-of-type(1) {
   padding: 1em;
   background-color: transparent;
-  border-right: 1px solid black;
+  border-right: 1px solid white;
 }
 .add-todo input:nth-of-type(2) {
   cursor: pointer;
@@ -56,7 +57,7 @@ export default {
 input,
 select,
 textarea {
-  color: black;
+  color: white;
 }
 input:focus {
   outline: none;

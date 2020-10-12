@@ -1,13 +1,15 @@
 <template>
   <div class="todos">
-    <div class="todo-items" v-for="todo in todos" :key="todo.id">
-      <!-- ony show todo items with same uid as the logged in user -->
-      <TodoItem
-        :todo="todo"
-        @deleteTodo="deleteTodo($event)"
-        @toggleComplete="toggleComplete($event)"
-      />
-    </div>
+    <transition-group name="fade" mode="out-in" tag="div">
+      <div class="todo-items" v-for="todo in todos" :key="todo.id">
+        <!-- ony show todo items with same uid as the logged in user -->
+        <TodoItem
+          :todo="todo"
+          @deleteTodo="deleteTodo($event)"
+          @toggleComplete="toggleComplete($event)"
+        />
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -36,6 +38,5 @@ export default {
 <style scoped>
 .todos {
   z-index: 1;
-  border-bottom: 1px solid black;
 }
 </style>

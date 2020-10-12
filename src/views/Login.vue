@@ -9,9 +9,11 @@
         placeholder="Password"
       />
       <input type="submit" value="Login" />
-      <section v-if="errorMsg" class="errorMsg">
-        <p>{{ errorMsg }}</p>
-      </section>
+      <transition name="fade" mode="out-in">
+        <section v-if="errorMsg" class="errorMsg">
+          <p>{{ errorMsg }}</p>
+        </section>
+      </transition>
     </form>
   </div>
 </template>
@@ -55,7 +57,7 @@ export default {
 }
 .login-form input {
   padding: 1em;
-  color: black;
-  border-bottom: 1px solid black;
+  color: white;
+  border-bottom: 1px solid white;
 }
 </style>

@@ -42,9 +42,9 @@ export default {
 #todo-item {
   display: grid;
   word-break: break-all;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   padding: 0.5em 1em 0.5em 1em;
-  border-top: 1px solid black;
+  border-bottom: 1px solid white;
   grid-template-columns: 0.5fr 4.5fr 0.5fr;
   /* grid-template-columns: 0.5fr 4.5fr 0.5fr 0.5fr; */
 }

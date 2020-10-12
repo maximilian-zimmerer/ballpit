@@ -2,7 +2,9 @@
   <div id="app">
     <!-- force re-render on route change -->
     <Header :key="$route.fullPath" />
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -17,15 +19,22 @@ export default {
 </script>
 
 <style>
+/* @font-face {
+  font-family: Aeonik;
+  src: url(../assets/fonts/Aeonik-Regular.woff2);
+  src: url(../assets/fonts/Aeonik-Regular.woff);
+} */
+
 html,
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  color: black;
+  /* padding: 1em; */
+  color: white;
   font-size: 12px;
-  background: grey;
+  background: black;
   font-family: Arial, Helvetica, sans-serif;
 }
 * {
@@ -45,12 +54,16 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-text-fill-color: black !important;
-  -webkit-box-shadow: 0 0 0 30px grey inset !important;
-  box-shadow: 0 0 0 30px grey inset !important;
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  box-shadow: 0 0 0 30px black inset !important;
+  -webkit-text-fill-color: white !important;
+  border-bottom: 1px solid black;
+  border-right: none !important;
+  border-left: none !important;
+  border-top: none !important;
 }
 ::placeholder {
-  color: black;
+  color: white;
 }
 .errorMsg {
   width: 100%;
@@ -75,6 +88,18 @@ canvas {
   z-index: 0;
   background: transparent !important;
 }
+/* transition */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.2s ease-in-out;
+}
+.fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
 @media (min-width: 769px) {
   html,
   body,

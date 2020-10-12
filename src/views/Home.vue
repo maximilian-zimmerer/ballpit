@@ -1,23 +1,31 @@
 <template>
   <div class="main-wrapper">
-    <TodoCanvas :todos="todos" />
+    <transition name="fade" mode="out-in">
+      <div v-if="emptyList" class="todo-canvas">
+        <TodoCanvas :todos="todos" />
+      </div>
+    </transition>
     <div class="todo-add">
       <AddTodo @newTodo="addTodo($event)" />
     </div>
-    <div v-if="emptyList" class="todo-list">
-      <Todos
-        :todos="todos"
-        :currentUser="currentUser"
-        @newTodo="addTodo($event)"
-        @toggleComplete="toggleComplete($event)"
-        @deleteTodo="deleteTodo($event)"
-        @moveDown="moveDown($event)"
-        @moveUp="moveUp($event)"
-      />
-    </div>
-    <div v-if="!emptyList" class="start-typing">
-      <span>Don't you have something to do?</span>
-    </div>
+    <transition name="fade" mode="out-in">
+      <div v-if="emptyList" class="todo-list">
+        <Todos
+          :todos="todos"
+          :currentUser="currentUser"
+          @newTodo="addTodo($event)"
+          @toggleComplete="toggleComplete($event)"
+          @deleteTodo="deleteTodo($event)"
+          @moveDown="moveDown($event)"
+          @moveUp="moveUp($event)"
+        />
+      </div>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <div v-if="!emptyList" class="start-typing">
+        <span>Don't you have something to do?</span>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -127,17 +135,19 @@ export default {
   flex-direction: column;
 }
 .todo-list {
+  z-index: 0;
   width: 100%;
-  z-index: 1;
   flex-grow: 1;
   overflow: scroll !important;
 }
 .start-typing {
+  z-index: 0;
   width: 100%;
   height: 100vh;
   display: flex;
+  position: fixed;
   align-items: center;
+  pointer-events: none;
   justify-content: center;
-  border-top: 1px solid black;
 }
 </style>
