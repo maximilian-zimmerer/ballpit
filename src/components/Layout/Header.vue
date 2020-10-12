@@ -68,7 +68,7 @@ export default {
   height: fit-content;
 }
 .link {
-  color: white;
+  color: grey;
   padding-right: 1em;
   text-decoration: none;
 }
@@ -78,10 +78,11 @@ export default {
   justify-content: flex-end;
 }
 .logout {
-  color: white;
+  color: grey;
   cursor: pointer;
 }
 .router-link-exact-active {
+  color: white;
   text-decoration: underline;
 }
 </style>

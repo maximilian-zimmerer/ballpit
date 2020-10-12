@@ -84,7 +84,7 @@ export default {
     },
     // delete item
     deleteTodo(id) {
-      // delete item from todos
+      // delete todo from firebase
       const myTodos = FBtodos.where("id", "==", `${id}`);
       myTodos.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -95,22 +95,19 @@ export default {
       FBcounter.doc(`${this.currentUser.uid}`)
         .get()
         .then((doc) => {
-          // document with UID exists -> increment count by 1
-          if (doc.exists) {
-            FBcounter.doc(`${this.currentUser.uid}`).update({
-              counter: firebase.firestore.FieldValue.increment(1),
-            });
-            // document with UID doesn't exists -> create new document and set count to 1
-          } else if (!doc.exists) {
-            console.log("Created new document!");
-            FBcounter.doc(`${this.currentUser.uid}`).set({
-              counter: 1,
-            });
-          }
+          // create new counting doc wit UI id it doesnt exist, otherwise just increment the existing number by 1
+          doc.exists
+            ? FBcounter.doc(`${this.currentUser.uid}`).update({
+                counter: firebase.firestore.FieldValue.increment(1),
+              })
+            : FBcounter.doc(`${this.currentUser.uid}`).set({
+                counter: 1,
+              });
         })
         .catch((err) => {
           console.error(err);
         });
+      // delete todo locally
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },

@@ -31,9 +31,9 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  /* padding: 1em; */
   color: white;
   font-size: 12px;
+  line-height: 1.4em;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
 }
