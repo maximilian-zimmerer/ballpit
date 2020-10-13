@@ -2,7 +2,7 @@ import Vue from "vue";
 import firebase from "firebase";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+import Info from "../views/Info.vue";
 import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
 
@@ -19,7 +19,7 @@ const routes = [
     },
   },
   {
-    path: "/register",
+    path: "/Register",
     name: Register,
     component: Register,
     // logged out users only
@@ -28,7 +28,7 @@ const routes = [
     },
   },
   {
-    path: "/login",
+    path: "/Login",
     name: Login,
     component: Login,
     // logged out users only
@@ -37,9 +37,9 @@ const routes = [
     },
   },
   {
-    path: "/about",
-    name: About,
-    component: About,
+    path: "/Info",
+    name: Info,
+    component: Info,
     // logged in users only
     meta: {
       requiresAuth: true,
@@ -59,7 +59,7 @@ router.beforeEach((to, from, next) => {
     if (!firebase.auth().currentUser) {
       // Go to login page
       next({
-        path: "/login",
+        path: "/Login",
         query: {
           redirect: to.fullPath,
         },

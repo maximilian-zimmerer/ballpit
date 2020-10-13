@@ -12,7 +12,6 @@ export default {
       oldVal: false,
     };
   },
-  computed: {},
   mounted() {
     // ---------------------------------------------------------- Variables
     const canvas = document.getElementById("canvas-wrapper");

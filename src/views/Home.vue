@@ -16,8 +16,6 @@
           @newTodo="addTodo($event)"
           @toggleComplete="toggleComplete($event)"
           @deleteTodo="deleteTodo($event)"
-          @moveDown="moveDown($event)"
-          @moveUp="moveUp($event)"
         />
       </div>
     </transition>

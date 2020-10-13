@@ -68,4 +68,10 @@ export default {
   height: 100%;
   padding: 1em;
 }
+.register-form input:nth-last-of-type(1) {
+  color: grey;
+}
+.register-form input:nth-last-of-type(1):hover {
+  color: white;
+}
 </style>

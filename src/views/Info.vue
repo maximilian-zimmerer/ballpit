@@ -1,12 +1,12 @@
 <template>
-  <section class="about">
+  <section class="info-wrapper">
     <section class="metadata">
       <section>Completed Todos: {{ completedCounter }}</section>
       <section>Logged in as: {{ email }}</section>
       <section>Last Login: {{ lastLogin }}</section>
       <section>Account Created: {{ accountCreated }}</section>
     </section>
-    <section class="info">
+    <section class="about">
       <section>
         I am a graphic designer about to enter the final year of my BA in
         Graphic Communication Design (with Creative Computing) at Central Saint
@@ -27,6 +27,7 @@ import db from "../firebaseInit";
 // Initialize Firebase
 const FBcounter = db.collection("counter");
 export default {
+  name: "Info",
   data() {
     return {
       email: false,
@@ -61,16 +62,16 @@ export default {
 };
 </script>
 <style scoped>
-.about {
+.info-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.info section,
+.about section,
 .metadata section {
   padding: 1em;
 }
-.info {
+.about {
   flex-grow: 1;
   border-left: none;
 }
@@ -79,13 +80,13 @@ export default {
 }
 
 @media (min-width: 769px) {
-  .about {
+  .info-wrapper {
     height: 100%;
     display: grid;
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr;
   }
-  .info {
+  .about {
     border-left: 1px solid white;
   }
 }

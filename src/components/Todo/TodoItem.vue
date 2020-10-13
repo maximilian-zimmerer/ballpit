@@ -1,23 +1,45 @@
 <template>
-  <section id="todo-item">
-    <p id="complete" @click="toggleComplete">{{ status }}</p>
-    <p
-      id="text"
-      @click="toggleComplete"
-      :class="{ isComplete: this.isComplete }"
-    >
-      {{ todo.text }}
-    </p>
-    <p id="remove" @click="deleteTodo">x</p>
+  <section class="todo-item">
+    <section class="todo-item-left">
+      <span class="completed">
+        <p
+          @click="toggleComplete"
+          @mouseover="hoverComplete = true"
+          @mouseleave="hoverComplete = false"
+        >
+          {{ status }}
+        </p>
+      </span>
+      <span class="index">
+        <p>{{ index + 1 }}</p>
+      </span>
+      <span class="text">
+        <p
+          @click="toggleComplete"
+          @mouseover="hoverComplete = true"
+          @mouseleave="hoverComplete = false"
+          :class="{
+            hoverComplete: this.hoverComplete,
+            isComplete: this.isComplete,
+          }"
+        >
+          {{ todo.text }}
+        </p>
+      </span>
+    </section>
+    <section class="todo-item-right">
+      <p class="remove" @click="deleteTodo">x</p>
+    </section>
   </section>
 </template>
 
 <script>
 export default {
   name: "TodoItem",
-  props: ["todo"],
+  props: ["todo", "index"],
   data() {
     return {
+      hoverComplete: false,
       isComplete: this.todo.isComplete,
     };
   },
@@ -45,29 +67,40 @@ export default {
 </script>
 
 <style scoped>
-#todo-item {
-  display: grid;
-  word-break: break-all;
+.todo-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
-  grid-template-columns: 0.5fr 4.5fr 0.5fr;
 }
-#complete {
-  cursor: pointer;
-  width: min-content;
-  justify-self: flex-start;
-  /* border: 1px solid yellow; */
+.todo-item-left {
+  flex: 1;
+  display: flex;
 }
-#text {
+.index,
+.completed {
+  flex: 1;
+  /* border: 1px solid green; */
+}
+.text {
+  flex: 8;
+}
+.text p,
+.remove p,
+.completed p {
   cursor: pointer;
   width: max-content;
-  padding-right: 1em;
+  /* border: 1px solid green; */
 }
-#remove {
+.index p {
+  cursor: default;
+}
+.hoverComplete {
+  color: grey;
+}
+.remove {
   cursor: pointer;
-  width: min-content;
-  justify-self: flex-end;
-  /* border: 1px solid yellow; */
 }
 .isComplete {
   color: grey;
