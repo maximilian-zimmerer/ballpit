@@ -26,7 +26,7 @@ body {
   width: 100%;
   height: 100%;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4em;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
@@ -40,7 +40,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   border-color: transparent;
   background-color: transparent;

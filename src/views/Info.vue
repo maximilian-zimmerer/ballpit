@@ -1,22 +1,26 @@
 <template>
   <section class="info-wrapper">
     <section class="metadata">
-      <section>Completed Todos: {{ completedCounter }}</section>
-      <section>Logged in as: {{ email }}</section>
-      <section>Last Login: {{ lastLogin }}</section>
-      <section>Account Created: {{ accountCreated }}</section>
+      <section class="email">Logged in as: {{ email }}</section>
+      <section class="login">Last Login: {{ lastLogin }}</section>
+      <section class="created">Account Created: {{ accountCreated }}</section>
+      <section class="counter-text">Completed Todos:</section>
+      <section class="counter-wrapper">
+        <p class="counter">{{ completedCounter }}</p>
+      </section>
     </section>
     <section class="about">
-      <section>
-        I am a graphic designer about to enter the final year of my BA in
-        Graphic Communication Design (with Creative Computing) at Central Saint
-        Martins. My interest lies at the intersection of branding and
-        interactivity, and I draw upon the fields of design and computing to
-        creatively solve problems. My past experiences include Mother Design
-        London, where I worked in various design capacities, including
-        animation, branding, and art direction. I am always open to new
-        opportunities and freelance work. If you would like to collaborate on a
-        project or have an enquiry about my work, please reach out.
+      <section class="about-title"><p>Ballpit</p></section>
+      <section class="about-body">
+        Ballpit is a playful approach to the classic "Todo" list and focuses on
+        the visual aspect of completing day-to-day taks. The main inspitations
+        behind this project are Google Creative Lab's Activity Bubbles (2020),
+        and the minimal interface of Are.na. If you have any questions about
+        this project, feel free to reach out.
+      </section>
+      <section class="about-copyright">
+        <span>Maximilian Zimmerer</span>
+        <span>©2020</span>
       </section>
     </section>
   </section>
@@ -24,7 +28,6 @@
 <script>
 import firebase from "firebase";
 import db from "../firebaseInit";
-// Initialize Firebase
 const FBcounter = db.collection("counter");
 export default {
   name: "Info",
@@ -65,18 +68,78 @@ export default {
 .info-wrapper {
   height: 100%;
   display: flex;
+  overflow: scroll;
   flex-direction: column;
 }
 .about section,
 .metadata section {
   padding: 1em;
 }
-.about {
-  flex-grow: 1;
-  border-left: none;
+.metadata {
+  display: flex;
+  flex-direction: column;
 }
 .metadata section {
   border-bottom: 1px solid white;
+}
+.counter-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.counter {
+  font-size: 10vw;
+}
+.counter-text {
+  border: none !important;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+}
+.about-title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-bottom: 1px solid white;
+}
+.about-title p {
+  font-size: 10vw;
+}
+.about-body {
+  flex: 1;
+}
+.about-copyright {
+  display: flex;
+  justify-self: flex-end;
+  border-top: 1px solid white;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .about {
+    order: 1;
+    border-left: none;
+    border-bottom: 1px solid white;
+  }
+  .metadata {
+    order: 2;
+    flex-grow: 1;
+  }
+  .counter-wrapper {
+    order: 1;
+  }
+  .email {
+    order: 2;
+  }
+  .login {
+    order: 3;
+  }
+  .created {
+    order: 4;
+    border-bottom: none !important;
+  }
 }
 
 @media (min-width: 769px) {
@@ -87,7 +150,15 @@ export default {
     grid-template-columns: 1fr 1fr;
   }
   .about {
+    order: 2;
+    flex-grow: 1;
     border-left: 1px solid white;
+  }
+  .metadata {
+    order: 1;
+  }
+  .counter-wrapper {
+    border-bottom: none !important;
   }
 }
 </style>
