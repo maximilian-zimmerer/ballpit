@@ -15,28 +15,10 @@ export default {
   components: {
     Header,
   },
-  // data() {
-  //   return {
-  //     ballColors: [
-  //       "#F58A07",
-  //       "#345511",
-  //       "#C81D25",
-  //       "#F58A07",
-  //       "#662C91",
-  //       "#222222",
-  //     ],
-  //   };
-  // },
 };
 </script>
 
 <style>
-/* @font-face {
-  font-family: Aeonik;
-  src: url(../assets/fonts/Aeonik-Regular.woff2);
-  src: url(../assets/fonts/Aeonik-Regular.woff);
-} */
-
 html,
 body {
   margin: 0;
@@ -52,10 +34,7 @@ body {
 * {
   box-sizing: border-box;
 }
-p {
-  word-break: normal;
-  -ms-word-break: normal;
-}
+
 input,
 input:focus,
 select:focus,

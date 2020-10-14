@@ -10,7 +10,15 @@ export default {
   data() {
     return {
       oldVal: false,
+      ballColor: false,
+      colors: ["#222222", "#662C91", "#F58A07", "#C81D25", "#345511"],
     };
+  },
+  created() {
+    this.ballColor = this.colors[
+      Math.floor(Math.random() * this.colors.length)
+    ];
+    console.log(this.ballColor);
   },
   mounted() {
     // ---------------------------------------------------------- Variables
@@ -96,7 +104,7 @@ export default {
         restitution: 0.6,
         friction: 0.3,
         render: {
-          fillStyle: "#222222",
+          fillStyle: this.ballColor,
         },
       });
     };

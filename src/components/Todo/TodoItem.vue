@@ -81,23 +81,22 @@ export default {
 .index,
 .completed {
   flex: 1;
-  /* border: 1px solid green; */
 }
 .text {
   flex: 8;
+  word-wrap: break-word;
 }
 .text p,
 .remove p,
 .completed p {
   cursor: pointer;
   width: max-content;
-  /* border: 1px solid green; */
+}
+.text p {
+  width: 90%;
 }
 .index p {
   cursor: default;
-}
-.hoverComplete {
-  color: grey;
 }
 .remove {
   cursor: pointer;

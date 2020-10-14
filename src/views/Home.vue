@@ -93,12 +93,13 @@ export default {
       FBcounter.doc(`${this.currentUser.uid}`)
         .get()
         .then((doc) => {
-          // create new counting doc wit UI id it doesnt exist, otherwise just increment the existing number by 1
+          // counter exists
           doc.exists
             ? FBcounter.doc(`${this.currentUser.uid}`).update({
                 counter: firebase.firestore.FieldValue.increment(1),
               })
-            : FBcounter.doc(`${this.currentUser.uid}`).set({
+            : // counter doesn't exists
+              FBcounter.doc(`${this.currentUser.uid}`).set({
                 counter: 1,
               });
         })
