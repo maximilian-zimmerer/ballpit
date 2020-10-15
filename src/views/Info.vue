@@ -12,14 +12,50 @@
     <section class="about">
       <section class="about-title"><p>Ballpit</p></section>
       <section class="about-body">
-        Ballpit is a playful approach to the classic "Todo" list and focuses on
-        the visual aspect of completing day-to-day taks. The main inspitations
-        behind this project are Google Creative Lab's Activity Bubbles (2020),
-        and the minimal interface of Are.na. If you have any questions about
-        this project, feel free to reach out.
+        Ballpit is a playful take on the classic "Todo-List" list and focuses on
+        the visual aspect of completing day-to-day tasks. The main inspiration
+        behind this project is
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://experiments.withgoogle.com/activity-bubbles"
+          >Google Creative Lab's Activity Bubbles</a
+        >
+        (2020). This app runs on
+
+        <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/"
+          >Vue.js</a
+        >
+        and uses
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://firebase.google.com/"
+          >Firebase
+        </a>
+        to authenticate users and securely store their data, as well as
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://brm.io/matter-js/"
+          >Matter.js
+        </a>
+        for physics simulation. You can see the code for Ballpit
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/MaximilianUAL2020/Todo-App"
+          >here</a
+        >, and if you have any questions about this project,
+        <a href="mailto: maxi.zimmerer@gmail.com">reach out</a>.
       </section>
       <section class="about-copyright">
-        <span>Maximilian Zimmerer</span>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.maxi.studio"
+          >Maximilian Zimmerer
+        </a>
         <span>©2020</span>
       </section>
     </section>
@@ -87,6 +123,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+section a {
+  text-decoration: underline;
+}
+section a:hover {
+  text-decoration: none;
 }
 .counter {
   font-size: 10vw;

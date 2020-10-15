@@ -18,7 +18,6 @@ export default {
     this.ballColor = this.colors[
       Math.floor(Math.random() * this.colors.length)
     ];
-    console.log(this.ballColor);
   },
   mounted() {
     // ---------------------------------------------------------- Variables

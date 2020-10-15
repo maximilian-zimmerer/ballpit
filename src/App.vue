@@ -34,7 +34,16 @@ body {
 * {
   box-sizing: border-box;
 }
-
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  outline: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
 input,
 input:focus,
 select:focus,
