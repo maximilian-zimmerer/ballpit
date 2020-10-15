@@ -17,7 +17,7 @@
       </span>
     </section>
     <div class="logo-wrapper">
-      <img class="rotate" src="../../../assets/logo/logo-1-01.png" />
+      <img class="rotate" src="../../../assets/logo/logo.png" />
     </div>
     <section class="logout-wrapper">
       <span v-if="isLoggedIn" class="logout" @click="logout">Logout</span>
