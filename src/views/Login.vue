@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
 export default {
   name: "login",
   data() {
@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .login-wrapper {
   width: 100%;
-  height: min-content;
+  height: 100%;
 }
 .login-form {
   display: grid;

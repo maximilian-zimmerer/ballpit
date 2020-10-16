@@ -1,5 +1,5 @@
 <template>
-  <div class="todos">
+  <div class="todos-wrapper">
     <transition-group name="fade-right" tag="div">
       <div class="todo-items" v-for="(todo, index) in todos" :key="todo.id">
         <!-- ony show todo items with same uid as the logged in user -->
@@ -37,7 +37,9 @@ export default {
 </script>
 
 <style scoped>
-.todos {
+.todos-wrapper {
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 </style>

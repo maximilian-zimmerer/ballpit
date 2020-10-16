@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from "firebase/app";
 import db from "../firebaseInit";
 import Todos from "@/components/Todo/Todos.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
@@ -141,6 +141,8 @@ export default {
 
 <style scoped>
 .main-wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -157,7 +159,7 @@ export default {
 .start-typing {
   z-index: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   position: fixed;
   align-items: center;

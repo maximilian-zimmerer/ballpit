@@ -26,6 +26,9 @@ export default {
     // const portrait = window.matchMedia("(orientation: portrait)");
     let myHeight = document.documentElement.clientHeight;
     let myWidth = document.documentElement.clientWidth;
+
+    console.log(myWidth + " " + myHeight);
+
     let scaleWall = 4;
     let wallWidth = 5000;
     let wallOffset = wallWidth / 2;
@@ -147,7 +150,7 @@ export default {
     function setRadius() {
       let radius;
       smallDevices.matches
-        ? (radius = Math.floor(Math.random() * 60) + 40)
+        ? (radius = Math.floor(Math.random() * 80) + 60)
         : (radius = Math.floor(Math.random() * 120) + 80);
       return radius;
     }
@@ -159,9 +162,8 @@ export default {
 #canvas-wrapper {
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   position: absolute;
   pointer-events: none;
+  /* border: 5px solid yellow; */
 }
 </style>

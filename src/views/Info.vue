@@ -62,7 +62,7 @@
   </section>
 </template>
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
 import db from "../firebaseInit";
 const FBcounter = db.collection("counter");
 export default {
@@ -102,27 +102,30 @@ export default {
 </script>
 <style scoped>
 .info-wrapper {
+  width: 100%;
   height: 100%;
   display: flex;
   overflow: scroll;
   flex-direction: column;
 }
-.about section,
-.metadata section {
-  padding: 1em;
-}
+.about,
 .metadata {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
 }
 .metadata section {
+  padding: 1em;
+  flex-shrink: 0;
   border-bottom: 1px solid white;
 }
 .counter-wrapper {
   flex: 1;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  /* border: 10px solid yellow; */
 }
 section a {
   text-decoration: underline;
@@ -131,14 +134,15 @@ section a:hover {
   text-decoration: none;
 }
 .counter {
+  flex-shrink: 0;
   font-size: 10vw;
 }
 .counter-text {
   border: none !important;
 }
-.about {
-  display: flex;
-  flex-direction: column;
+.about section {
+  padding: 1em;
+  flex-shrink: 0;
 }
 .about-title {
   display: flex;
@@ -151,6 +155,7 @@ section a:hover {
 }
 .about-body {
   flex: 1;
+  flex-shrink: 0;
 }
 .about-copyright {
   display: flex;
@@ -158,7 +163,6 @@ section a:hover {
   border-top: 1px solid white;
   justify-content: space-between;
 }
-
 @media (max-width: 768px) {
   .about {
     order: 1;
@@ -183,7 +187,6 @@ section a:hover {
     border-bottom: none !important;
   }
 }
-
 @media (min-width: 769px) {
   .info-wrapper {
     height: 100%;

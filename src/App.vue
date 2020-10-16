@@ -23,10 +23,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   color: white;
-  font-size: 14px;
+  font-size: 17px;
+  overflow: hidden;
   line-height: 1.4em;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
@@ -49,7 +50,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  font-size: 14px;
+  font-size: 17px;
   cursor: pointer;
   border-color: transparent;
   background-color: transparent;

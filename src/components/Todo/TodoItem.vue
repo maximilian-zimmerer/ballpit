@@ -1,5 +1,5 @@
 <template>
-  <section class="todo-item">
+  <section class="todo-item-wrapper">
     <section class="todo-item-left">
       <span class="completed">
         <p
@@ -67,8 +67,9 @@ export default {
 </script>
 
 <style scoped>
-.todo-item {
+.todo-item-wrapper {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   padding: 0.5em 1em 0.5em 1em;

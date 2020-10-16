@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "AddTodo",
@@ -41,6 +41,8 @@ export default {
 <style scoped>
 .add-todo-wrapper {
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .add-todo {
   display: grid;

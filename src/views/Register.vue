@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
 export default {
   name: "register",
   data() {
@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .register-wrapper {
   width: 100%;
-  height: min-content;
+  height: 100%;
 }
 .register-form {
   display: grid;
