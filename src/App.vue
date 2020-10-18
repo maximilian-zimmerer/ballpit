@@ -23,11 +23,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   color: white;
   font-size: 17px;
-  overflow: hidden;
+  /* overflow: hidden; */
   line-height: 1.4em;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
@@ -64,8 +64,8 @@ input:-webkit-autofill:active {
   border-right: none !important;
   border-bottom: 1px solid black;
   -webkit-text-fill-color: white !important;
-  box-shadow: 0 0 0 30px black inset !important;
-  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  box-shadow: 0 0 0 2em black inset !important;
+  -webkit-box-shadow: 0 0 0 2em black inset !important;
 }
 ::placeholder {
   color: white;

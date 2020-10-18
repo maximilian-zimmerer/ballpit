@@ -71,6 +71,7 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
@@ -99,11 +100,14 @@ export default {
 .index p {
   cursor: default;
 }
-.remove {
-  cursor: pointer;
-}
 .isComplete {
   color: grey;
   text-decoration: line-through;
+}
+@media (min-width: 1300px) {
+  .hoverComplete {
+    color: grey;
+    text-decoration: line-through;
+  }
 }
 </style>

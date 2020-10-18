@@ -12,15 +12,15 @@
       <span v-if="!isLoggedIn">
         <router-link class="link" to="/Login">Login</router-link>
       </span>
-      <span v-if="!isLoggedIn">
-        <router-link class="link" to="/Register">Register</router-link>
-      </span>
     </section>
     <div class="logo-wrapper">
       <img class="rotate" src="../../../assets/logo/logo.png" />
     </div>
     <section class="logout-wrapper">
       <span v-if="isLoggedIn" class="logout" @click="logout">Logout</span>
+      <span v-if="!isLoggedIn" class="register">
+        <router-link class="link" to="/Register">Register</router-link>
+      </span>
     </section>
   </section>
 </template>
@@ -72,9 +72,12 @@ export default {
   height: fit-content;
   /* border: 1px solid yellow; */
 }
+.nav .link:nth-of-type(1) {
+  padding-right: 1em;
+}
 .link {
   color: grey;
-  padding-right: 1em;
+  /* padding-right: 1em; */
   text-decoration: none;
 }
 .logo-wrapper {
