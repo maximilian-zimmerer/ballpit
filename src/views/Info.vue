@@ -1,14 +1,46 @@
 <template>
   <section class="info-wrapper">
+    <!-- Section 1 -->
+    <!-- Metadata -->
     <section class="metadata">
       <section class="email">Logged in as: {{ email }}</section>
       <section class="login">Last Login: {{ lastLogin }}</section>
-      <section class="created">Account Created: {{ accountCreated }}</section>
+      <!-- Update Password -->
+      <section class="password-wrapper">
+        <!-- Label -->
+        <form class="password-form" v-on:submit.prevent="updatePassword">
+          <label for="newPassword">Change Password:</label>
+          <!-- Input -->
+          <input
+            type="text"
+            id="newPassword"
+            v-model="newPassword"
+            placeholder="Favorite Animal?"
+          />
+          <!-- Submit -->
+          <input type="submit" value="Update" />
+        </form>
+      </section>
+      <!-- Error Message -->
+      <transition name="fade-right">
+        <section v-if="errorMsg" class="error-wrapper">
+          <span class="error-msg">{{ errorMsg }}</span>
+        </section>
+      </transition>
+      <!-- Delete Account-->
+      <section class="delete-wrapper">
+        <form class="delete-form" v-on:submit.prevent="deleteAccount">
+          <input type="submit" value="Delete Account" />
+        </form>
+      </section>
+      <!-- Todos Counter -->
       <section class="counter-text">Completed Todos:</section>
       <section class="counter-wrapper">
         <p class="counter">{{ completedCounter }}</p>
       </section>
     </section>
+    <!-- Section 2 -->
+    <!-- About -->
     <section class="about">
       <section class="about-title"><p>Ballpit</p></section>
       <section class="about-body">
@@ -62,7 +94,7 @@
   </section>
 </template>
 <script>
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import db from "../firebaseInit";
 const FBcounter = db.collection("counter");
 export default {
@@ -70,11 +102,36 @@ export default {
   data() {
     return {
       email: false,
+      errorMsg: false,
+      newPassword: "",
       lastLogin: false,
       currentUser: false,
       completedCounter: 0,
-      accountCreated: false,
     };
+  },
+  methods: {
+    updatePassword() {
+      this.currentUser
+        .updatePassword(this.newPassword)
+        .then(() => {
+          this.errorMsg = "Password Updated!";
+          this.newPassword = "";
+        })
+        .catch((err) => {
+          this.errorMsg = err.message;
+          this.newPassword = "";
+        });
+    },
+    deleteAccount() {
+      this.currentUser
+        .delete()
+        .then(() => {
+          this.$router.push("/Login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   created() {
     if (firebase.auth().currentUser) {
@@ -125,7 +182,6 @@ export default {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  /* border: 10px solid yellow; */
 }
 section a {
   text-decoration: underline;
@@ -163,9 +219,21 @@ section a:hover {
   border-top: 1px solid white;
   justify-content: space-between;
 }
+::placeholder {
+  color: grey !important;
+}
+input[type="text"] {
+  color: white;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+}
 @media (max-width: 768px) {
   .about {
-    order: 1;
+    /* order: 1; */
     border-left: none;
     border-bottom: 1px solid white;
   }
@@ -173,18 +241,31 @@ section a:hover {
     order: 2;
     flex-grow: 1;
   }
-  .counter-wrapper {
-    order: 1;
-  }
   .email {
     order: 2;
   }
   .login {
     order: 3;
   }
-  .created {
+  .password-wrapper {
     order: 4;
+  }
+  .password-form {
+    gap: 1em;
+    display: grid;
+  }
+  .error-wrapper {
+    order: 5;
+  }
+  .delete-wrapper {
+    order: 6;
     border-bottom: none !important;
+  }
+  .counter-wrapper {
+    order: 1;
+  }
+  input[type="submit"] {
+    text-align: left;
   }
 }
 @media (min-width: 769px) {
@@ -202,8 +283,24 @@ section a:hover {
   .metadata {
     order: 1;
   }
+  label {
+    padding-right: 1em !important;
+  }
+  .password-form {
+    display: flex;
+    align-items: center;
+  }
   .counter-wrapper {
     border-bottom: none !important;
+  }
+  input[type="text"] {
+    flex: 1;
+  }
+  .delete-form input:hover {
+    color: orange;
+  }
+  .password-form input[type="submit"]:hover {
+    color: grey;
   }
 }
 </style>

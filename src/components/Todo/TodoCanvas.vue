@@ -26,9 +26,6 @@ export default {
     // const portrait = window.matchMedia("(orientation: portrait)");
     let myHeight = document.documentElement.clientHeight;
     let myWidth = document.documentElement.clientWidth;
-
-    console.log(myWidth + " " + myHeight);
-
     let scaleWall = 4;
     let wallWidth = 5000;
     let wallOffset = wallWidth / 2;

@@ -49,9 +49,12 @@ input,
 input:focus,
 select:focus,
 textarea:focus {
+  padding: 0;
   outline: none;
+  color: white;
   font-size: 17px;
   cursor: pointer;
+  caret-color: white;
   border-color: transparent;
   background-color: transparent;
 }
@@ -70,13 +73,13 @@ input:-webkit-autofill:active {
 ::placeholder {
   color: white;
 }
-.errorMsg {
+.error-wrapper {
   width: 100%;
   padding: 0 1em 0;
   text-align: center;
   height: min-content;
 }
-.errorMsg p {
+.error-msg {
   color: yellow;
   text-decoration: underline;
   text-decoration-color: yellow;
@@ -87,7 +90,6 @@ input:-webkit-autofill:active {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  /* padding: 1em 1em 1em 1em; */
 }
 canvas {
   z-index: 0;

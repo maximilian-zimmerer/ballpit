@@ -10,8 +10,8 @@
       />
       <input type="submit" value="Login" />
       <transition name="fade-right">
-        <section v-if="errorMsg" class="errorMsg">
-          <p>{{ errorMsg }}</p>
+        <section v-if="errorMsg" class="error-wrapper">
+          <p class="error-msg">{{ errorMsg }}</p>
         </section>
       </transition>
     </form>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 export default {
   name: "login",
   data() {

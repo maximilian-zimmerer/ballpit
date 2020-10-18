@@ -10,8 +10,8 @@
       />
       <input type="submit" value="Register" />
       <transition name="fade-right">
-        <section v-if="errorMsg" class="errorMsg">
-          <p>{{ errorMsg }}</p>
+        <section v-if="errorMsg" class="error-wrapper">
+          <p class="error-msg">{{ errorMsg }}</p>
         </section>
       </transition>
     </form>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 export default {
   name: "register",
   data() {
@@ -37,7 +37,6 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         // .then((account) => {
         .then(() => {
-          // alert(`Created an account as ${account.user.email}`);
           //re-route to homepage
           this.$router.push("/");
         })
