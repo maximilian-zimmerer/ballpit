@@ -71,7 +71,7 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 2em black inset !important;
 }
 ::placeholder {
-  color: white;
+  color: grey !important;
 }
 .error-wrapper {
   width: 100%;

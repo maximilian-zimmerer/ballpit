@@ -219,10 +219,7 @@ section a:hover {
   border-top: 1px solid white;
   justify-content: space-between;
 }
-::placeholder {
-  color: grey !important;
-}
-input[type="text"] {
+.password-form input[type="text"] {
   color: white;
 }
 input:-webkit-autofill,
@@ -286,21 +283,20 @@ input:-webkit-autofill:active {
   label {
     padding-right: 1em !important;
   }
-  .password-form {
-    display: flex;
-    align-items: center;
-  }
   .counter-wrapper {
     border-bottom: none !important;
   }
-  input[type="text"] {
-    flex: 1;
+  .password-form input[type="text"] {
+    width: 50%;
   }
-  .delete-form input:hover {
-    color: orange;
+  .password-form input[type="submit"] {
+    float: right;
   }
   .password-form input[type="submit"]:hover {
     color: grey;
+  }
+  .delete-form input:hover {
+    color: orange;
   }
 }
 </style>

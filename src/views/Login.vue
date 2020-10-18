@@ -60,10 +60,10 @@ export default {
   color: white;
   border-bottom: 1px solid white;
 }
-.login-form input:nth-last-of-type(1) {
+.login-form input[type="submit"] {
   color: grey;
 }
-.login-form input:nth-last-of-type(1):hover {
+.login-form input[type="submit"]:hover {
   color: white;
 }
 </style>
