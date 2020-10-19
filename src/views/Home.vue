@@ -137,10 +137,12 @@ export default {
           const tempTodo = doc.data();
           tempTodos.push(tempTodo);
         });
-        // only add todos with same uid
+        // filter according to uid
         this.todos = tempTodos.filter(
           (tempTodo) => tempTodo.uid == this.currentUser.uid
         );
+        // sort according to timestamp
+        this.todos.sort((todo1, todo2) => todo1.timeStamp - todo2.timeStamp);
       })
       .catch((err) => {
         console.error(err);

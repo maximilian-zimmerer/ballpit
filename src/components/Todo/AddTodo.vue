@@ -20,12 +20,15 @@ export default {
   },
   methods: {
     newTodo() {
+      const date = new Date();
+      const timeStamp = firebase.firestore.Timestamp.fromDate(date);
       if (this.title != "") {
         let newTodo = {
           id: uuidv4(),
           text: this.title,
           isComplete: false,
           uid: this.currentUser.uid,
+          timeStamp: timeStamp.seconds,
         };
         this.$emit("newTodo", newTodo);
       }
