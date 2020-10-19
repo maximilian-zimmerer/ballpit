@@ -27,7 +27,7 @@ body {
   height: 100%;
   color: white;
   font-size: 17px;
-  /* overflow: hidden; */
+  overflow: hidden;
   line-height: 1.4em;
   background: black;
   -webkit-text-size-adjust: 100%;
@@ -47,6 +47,8 @@ a:visited {
   text-decoration: none;
 }
 input,
+select,
+textarea,
 input:focus,
 select:focus,
 textarea:focus {
@@ -58,6 +60,9 @@ textarea:focus {
   caret-color: white;
   border-color: transparent;
   background-color: transparent;
+}
+input:-webkit-autofill::first-line {
+  font-size: 17px;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -76,7 +81,7 @@ input:-webkit-autofill:active {
 }
 .error-wrapper {
   width: 100%;
-  padding: 0 1em 0;
+  padding: 1em;
   text-align: center;
   height: min-content;
 }
@@ -106,7 +111,6 @@ canvas {
 .fade-leave-to {
   opacity: 0;
 }
-
 /* fade-right */
 .fade-right-enter-active,
 .fade-right-leave-active {
@@ -124,9 +128,12 @@ canvas {
   html,
   body,
   input,
+  select,
+  textarea,
   input:focus,
   select:focus,
-  textarea:focus {
+  textarea:focus,
+  input:-webkit-autofill::first-line {
     font-size: 1.2vw;
   }
 }

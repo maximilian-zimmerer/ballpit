@@ -19,7 +19,6 @@ const routes = [
   {
     path: "/Register",
     component: Register,
-
     meta: {
       requiresGuest: true,
     },

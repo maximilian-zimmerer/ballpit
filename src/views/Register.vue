@@ -16,13 +16,13 @@
       <!-- Error Message -->
       <transition name="fade-right">
         <section v-if="errorMsg" class="error-wrapper">
-          <p class="error-msg">{{ errorMsg }}</p>
+          <span class="error-msg">{{ errorMsg }}</span>
         </section>
       </transition>
     </form>
-    <!-- Reset Toggler -->
+    <!-- Reset Toggle -->
     <transition name="fade-right">
-      <section class="reset-toggler" v-if="!showReset" @click="toggleReset">
+      <section class="reset-toggle" v-if="!showReset" @click="toggleReset">
         <span>Forgot my password</span>
       </section>
     </transition>
@@ -64,6 +64,7 @@ export default {
     register() {
       firebase
         .auth()
+        // register a new user
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.$router.push("/");
@@ -75,10 +76,11 @@ export default {
     sendReset() {
       firebase
         .auth()
+        // send password reset email
         .sendPasswordResetEmail(this.emailReset)
         .then(() => {
+          this.errorMsg = `Email sent to ${this.emailReset}!`;
           this.emailReset = "";
-          console.log("Email Sent");
         })
         .catch((err) => {
           this.errorMsg = err;
@@ -106,7 +108,7 @@ export default {
   color: white;
   border-bottom: 1px solid white;
 }
-.reset-toggler {
+.reset-toggle {
   bottom: 0;
   width: 100%;
   padding: 1em;
@@ -135,6 +137,10 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
   }
+  .reset-form input[type="submit"] {
+    text-align: left;
+    width: min-content;
+  }
 }
 @media (min-width: 376px) {
   label {
@@ -146,7 +152,7 @@ export default {
   .reset-wrapper input[type="submit"] {
     float: right;
   }
-  .reset-toggler:hover,
+  .reset-toggle:hover,
   .reset-wrapper input[type="submit"]:hover {
     color: white;
   }

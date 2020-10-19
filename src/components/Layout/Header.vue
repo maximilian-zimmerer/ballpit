@@ -1,21 +1,25 @@
 <template>
-  <section class="header-grid">
-    <section class="nav">
-      <!-- App Navigation -->
+  <section class="header-wrapper">
+    <section class="header-nav">
+      <!-- List -->
       <span v-if="isLoggedIn">
         <router-link class="link" to="/">List</router-link>
       </span>
+      <!-- Info -->
       <span v-if="isLoggedIn">
         <router-link class="link" to="/Info">Info</router-link>
       </span>
-      <!-- Login/Register -->
+      <!-- Login -->
       <span v-if="!isLoggedIn">
         <router-link class="link" to="/Login">Login</router-link>
       </span>
     </section>
+    <!-- Logo -->
     <div class="logo-wrapper">
       <img class="rotate" src="../../../assets/logo/logo.png" />
     </div>
+    <!-- Logout -->
+    <!-- Register -->
     <section class="logout-wrapper">
       <span v-if="isLoggedIn" class="logout" @click="logout">Logout</span>
       <span v-if="!isLoggedIn" class="register">
@@ -50,47 +54,37 @@ export default {
       this.isLoggedIn = true;
     }
   },
-  computed: {
-    matchRoute() {
-      return this.$route.name.name;
-    },
-  },
 };
 </script>
 
 <style scoped>
-.header-grid {
+.header-wrapper {
   z-index: 1;
   padding: 1em;
   display: grid;
   border-bottom: 1px solid white;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 1px solid yellow; */
 }
-.nav {
+.header-nav {
   display: flex;
   height: fit-content;
-  /* border: 1px solid yellow; */
-}
-.nav .link:nth-of-type(1) {
-  padding-right: 1em;
 }
 .link {
   color: grey;
-  /* padding-right: 1em; */
   text-decoration: none;
+}
+.header-nav .link:nth-of-type(1) {
+  padding-right: 1em;
 }
 .logo-wrapper {
   display: flex;
   align-content: center;
   justify-content: center;
-  /* border: 1px solid yellow; */
 }
 img {
   width: 2em;
   height: 2em;
   cursor: default;
-  /* border: 1px solid yellow; */
 }
 .rotate {
   animation: rotation 8s infinite linear;
@@ -107,7 +101,6 @@ img {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  /* border: 1px solid yellow; */
 }
 .logout {
   color: grey;

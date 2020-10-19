@@ -1,20 +1,25 @@
 <template>
   <section class="todo-item-wrapper">
     <section class="todo-item-left">
-      <span class="completed">
-        <p
+      <!-- completed status -->
+      <span class="completed-wrapper">
+        <span
+          class="completed"
           @click="toggleComplete"
           @mouseover="hoverComplete = true"
           @mouseleave="hoverComplete = false"
         >
           {{ status }}
-        </p>
+        </span>
       </span>
-      <span class="index">
-        <p>{{ index + 1 }}</p>
+      <!-- index -->
+      <span class="index-wrapper">
+        <span class="index">{{ index + 1 }}</span>
       </span>
-      <span class="text">
-        <p
+      <!-- text -->
+      <span class="text-wrapper">
+        <span
+          class="text"
           @click="toggleComplete"
           @mouseover="hoverComplete = true"
           @mouseleave="hoverComplete = false"
@@ -24,11 +29,12 @@
           }"
         >
           {{ todo.text }}
-        </p>
+        </span>
       </span>
     </section>
+    <!-- remove -->
     <section class="todo-item-right">
-      <p class="remove" @click="deleteTodo">x</p>
+      <span class="remove" @click="deleteTodo">x</span>
     </section>
   </section>
 </template>
@@ -70,39 +76,30 @@ export default {
 .todo-item-wrapper {
   width: 100%;
   height: 100%;
+  padding: 1em;
   display: flex;
   cursor: pointer;
   flex-direction: row;
-  padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
-}
-.todo-item-left,
-.todo-item-right {
-  transition: all 1s;
-  display: inline-block;
 }
 .todo-item-left {
   flex: 1;
   display: flex;
 }
-.index,
-.completed {
+.index-wrapper,
+.completed-wrapper {
   flex: 1;
 }
-.text {
+.text-wrapper {
   flex: 8;
+  padding-right: 1em;
   word-wrap: break-word;
 }
-.text p,
-.remove p,
-.completed p {
+.remove,
+.completed {
   cursor: pointer;
-  width: max-content;
 }
-.text p {
-  width: 90%;
-}
-.index p {
+.index {
   cursor: default;
 }
 .isComplete {

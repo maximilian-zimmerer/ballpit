@@ -1,5 +1,6 @@
 <template>
   <div class="login-wrapper">
+    <!-- Login Form -->
     <form class="login-form" v-on:submit.prevent="login">
       <!-- Email Input -->
       <input type="text" id="email" v-model="email" placeholder="Email" />
@@ -15,7 +16,7 @@
       <transition name="fade-right">
         <!-- Error Message -->
         <section v-if="errorMsg" class="error-wrapper">
-          <p class="error-msg">{{ errorMsg }}</p>
+          <span class="error-msg">{{ errorMsg }}</span>
         </section>
       </transition>
     </form>
@@ -37,7 +38,7 @@ export default {
     login() {
       firebase
         .auth()
-        //register new user
+        // sign in existing user
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.$router.push("/");

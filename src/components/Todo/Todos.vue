@@ -38,10 +38,10 @@ export default {
 
 <style scoped>
 .todos-wrapper {
-  z-index: 1;
   width: 100%;
   height: 100%;
 }
+/* animation */
 .fade-right-move {
   transition: transform 0.3s ease-in-out;
 }

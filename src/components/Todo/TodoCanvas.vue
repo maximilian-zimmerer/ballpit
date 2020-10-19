@@ -14,6 +14,7 @@ export default {
       colors: ["#222222", "#662C91", "#F58A07", "#C81D25", "#345511"],
     };
   },
+  // get random ball colors from array
   created() {
     this.ballColor = this.colors[
       Math.floor(Math.random() * this.colors.length)
@@ -21,14 +22,15 @@ export default {
   },
   mounted() {
     // ---------------------------------------------------------- Variables
+    const scaleWall = 4;
+    const wallWidth = 5000;
+    const wallOffset = wallWidth / 2;
     const canvas = document.getElementById("canvas-wrapper");
     const smallDevices = window.matchMedia("(max-width: 767px)");
     // const portrait = window.matchMedia("(orientation: portrait)");
     let myHeight = document.documentElement.clientHeight;
     let myWidth = document.documentElement.clientWidth;
-    let scaleWall = 4;
-    let wallWidth = 5000;
-    let wallOffset = wallWidth / 2;
+
     // declare vars
     let Engine = Matter.Engine,
       World = Matter.World,
@@ -38,6 +40,7 @@ export default {
     // init engine
     let engine = Engine.create(),
       world = engine.world;
+
     // init render
     let render = Render.create({
       canvas: canvas,
@@ -130,13 +133,17 @@ export default {
       render.canvas.width = document.documentElement.clientWidth;
       render.canvas.height = document.documentElement.clientHeight;
     };
+
     // todo event listener
     setInterval(() => {
+      // delete circle
       if (this.oldVal < this.todos.length) {
         this.oldVal = this.todos.length;
         World.add(engine.world, addCircle());
+        // add circle circle
       } else if (this.oldVal > this.todos.length) {
         this.oldVal = this.todos.length;
+        // don't delete walls
         if (world.bodies.length > 3) {
           Matter.Composite.remove(world, world.bodies[4]);
         }
@@ -161,6 +168,5 @@ export default {
   left: 0;
   position: absolute;
   pointer-events: none;
-  /* border: 5px solid yellow; */
 }
 </style>

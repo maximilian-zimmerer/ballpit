@@ -7,8 +7,9 @@
       <section class="login">Last Login: {{ lastLogin }}</section>
       <!-- Update Password -->
       <section class="password-wrapper">
-        <!-- Label -->
+        <!-- Form -->
         <form class="password-form" v-on:submit.prevent="updatePassword">
+          <!-- Label -->
           <label for="newPassword">Change Password:</label>
           <!-- Input -->
           <input
@@ -42,7 +43,9 @@
     <!-- Section 2 -->
     <!-- About -->
     <section class="about">
-      <section class="about-title"><p>Ballpit</p></section>
+      <section class="about-title-wrapper">
+        <p class="about-title">Ballpit</p>
+      </section>
       <section class="about-body">
         Ballpit is a playful take on the classic "Todo-List" list and focuses on
         the visual aspect of completing day-to-day tasks. The main inspiration
@@ -78,7 +81,7 @@
           rel="noopener noreferrer"
           href="https://github.com/MaximilianUAL2020/Todo-App"
           >here</a
-        >, and if you have any questions about this project,
+        >, and if you have any questions about this project, please feel free to
         <a href="mailto: maxi.zimmerer@gmail.com">reach out</a>.
       </section>
       <section class="about-copyright">
@@ -95,8 +98,8 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
 import db from "../firebaseInit";
+import firebase from "firebase/app";
 const FBtodos = db.collection("todos");
 const FBcounter = db.collection("counter");
 export default {
@@ -126,6 +129,7 @@ export default {
     },
     deleteAccount() {
       const myTodos = FBtodos.where("uid", "==", `${this.currentUser.uid}`);
+      // firebase
       // delete todos
       myTodos
         .get()
@@ -164,7 +168,6 @@ export default {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser;
       this.lastLogin = this.currentUser.metadata.lastSignInTime;
-      this.accountCreated = this.currentUser.metadata.creationTime;
       this.email = this.currentUser.email;
     }
   },
@@ -173,6 +176,7 @@ export default {
     FBcounter.doc(`${this.currentUser.uid}`)
       .get()
       .then((doc) => {
+        // exists
         if (doc.exists) {
           this.completedCounter = doc.data().counter;
         }
@@ -181,21 +185,6 @@ export default {
         console.error(err);
       });
   },
-
-  //  this.currentUser
-  //         .delete()
-  //         .then(
-  //           FBcounter.doc(this.currentUser.uid)
-  //             .delete()
-  //             .then(() => {
-  //               console.log("Deleted Counter");
-  //               this.$router.push("/Login");
-  //             })
-  //         )
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     },
 };
 </script>
 
@@ -218,6 +207,15 @@ export default {
   flex-shrink: 0;
   border-bottom: 1px solid white;
 }
+section a {
+  text-decoration: underline;
+}
+section a:hover {
+  text-decoration: none;
+}
+.counter-text {
+  border: none !important;
+}
 .counter-wrapper {
   flex: 1;
   display: flex;
@@ -225,30 +223,21 @@ export default {
   align-items: center;
   justify-content: center;
 }
-section a {
-  text-decoration: underline;
-}
-section a:hover {
-  text-decoration: none;
-}
 .counter {
   flex-shrink: 0;
   font-size: 10vw;
-}
-.counter-text {
-  border: none !important;
 }
 .about section {
   padding: 1em;
   flex-shrink: 0;
 }
-.about-title {
+.about-title-wrapper {
   display: flex;
   align-content: center;
   justify-content: center;
   border-bottom: 1px solid white;
 }
-.about-title p {
+.about-title {
   font-size: 10vw;
 }
 .about-body {
@@ -272,13 +261,13 @@ input:-webkit-autofill:active {
 }
 @media (max-width: 768px) {
   .about {
-    /* order: 1; */
     border-left: none;
-    border-bottom: 1px solid white;
   }
   .metadata {
-    order: 2;
     flex-grow: 1;
+  }
+  .counter-wrapper {
+    order: 1;
   }
   .email {
     order: 2;
@@ -293,34 +282,28 @@ input:-webkit-autofill:active {
     gap: 1em;
     display: grid;
   }
+  .password-form input[type="submit"] {
+    text-align: left;
+  }
   .error-wrapper {
     order: 5;
   }
   .delete-wrapper {
     order: 6;
-    border-bottom: none !important;
-  }
-  .counter-wrapper {
-    order: 1;
-  }
-  input[type="submit"] {
-    text-align: left;
   }
 }
 @media (min-width: 769px) {
   .info-wrapper {
-    height: 100%;
     display: grid;
-    grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+  }
+  .metadata {
+    order: 1;
   }
   .about {
     order: 2;
     flex-grow: 1;
     border-left: 1px solid white;
-  }
-  .metadata {
-    order: 1;
   }
   label {
     padding-right: 1em !important;

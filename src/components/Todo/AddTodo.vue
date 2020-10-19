@@ -22,10 +22,10 @@ export default {
     newTodo() {
       if (this.title != "") {
         let newTodo = {
-          uid: this.currentUser.uid,
           id: uuidv4(),
-          isComplete: false,
           text: this.title,
+          isComplete: false,
+          uid: this.currentUser.uid,
         };
         this.$emit("newTodo", newTodo);
       }
@@ -40,7 +40,6 @@ export default {
 
 <style scoped>
 .add-todo-wrapper {
-  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -49,22 +48,14 @@ export default {
   grid-template-columns: 5fr 1fr;
   border-bottom: 1px solid white;
 }
-.add-todo input:nth-of-type(1) {
+.add-todo input[type="text"] {
   padding: 1em;
   background-color: transparent;
   border-right: 1px solid white;
 }
-.add-todo input:nth-of-type(2) {
+.add-todo input[type="submit"] {
   cursor: pointer;
   border-color: transparent;
   background-color: transparent;
-}
-input,
-select,
-textarea {
-  color: white;
-}
-input:focus {
-  outline: none;
 }
 </style>
