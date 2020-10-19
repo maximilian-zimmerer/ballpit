@@ -155,6 +155,7 @@ export default {
         .signOut()
         .then(() => {
           this.$router.push("/Login");
+          this.isLoggedIn = false;
         });
     },
   },
