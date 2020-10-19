@@ -13,13 +13,15 @@
       />
       <!-- Submit -->
       <input type="submit" value="Login" />
-      <transition name="fade-right">
-        <!-- Error Message -->
-        <section v-if="errorMsg" class="error-wrapper">
-          <span class="error-msg">{{ errorMsg }}</span>
-        </section>
-      </transition>
+      <!-- Error Message -->
+      <section v-if="errorMsg" class="error-wrapper">
+        <span class="error-msg">{{ errorMsg }}</span>
+      </section>
     </form>
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <img class="logo" src="../../assets/logo/logo_text.png" />
+    </div>
   </div>
 </template>
 
@@ -55,6 +57,8 @@ export default {
 .login-wrapper {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .login-form {
   display: grid;
@@ -70,5 +74,18 @@ export default {
 }
 .login-form input[type="submit"]:hover {
   color: white;
+}
+.logo-wrapper {
+  flex: 1;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.logo {
+  width: 100%;
+  height: auto;
+  object-fit: scale-down;
 }
 </style>
