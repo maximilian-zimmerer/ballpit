@@ -93,9 +93,11 @@
     </section>
   </section>
 </template>
+
 <script>
 import firebase from "firebase/app";
 import db from "../firebaseInit";
+const FBtodos = db.collection("todos");
 const FBcounter = db.collection("counter");
 export default {
   name: "Info",
@@ -123,13 +125,36 @@ export default {
         });
     },
     deleteAccount() {
-      this.currentUser
-        .delete()
+      const myTodos = FBtodos.where("uid", "==", `${this.currentUser.uid}`);
+      // delete todos
+      myTodos
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            doc.ref.delete();
+          });
+        })
         .then(() => {
-          this.$router.push("/Login");
+          // delete counter
+          FBcounter.doc(this.currentUser.uid)
+            .delete()
+            // delete account
+            .then(() => {
+              this.currentUser.delete();
+              this.logout();
+            });
         })
         .catch((err) => {
           console.log(err);
+        });
+    },
+    // Logout function
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push("/Login");
         });
     },
   },
@@ -155,8 +180,24 @@ export default {
         console.error(err);
       });
   },
+
+  //  this.currentUser
+  //         .delete()
+  //         .then(
+  //           FBcounter.doc(this.currentUser.uid)
+  //             .delete()
+  //             .then(() => {
+  //               console.log("Deleted Counter");
+  //               this.$router.push("/Login");
+  //             })
+  //         )
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     },
 };
 </script>
+
 <style scoped>
 .info-wrapper {
   width: 100%;

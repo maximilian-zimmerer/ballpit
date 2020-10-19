@@ -76,6 +76,11 @@ export default {
   padding: 0.5em 1em 0.5em 1em;
   border-bottom: 1px solid white;
 }
+.todo-item-left,
+.todo-item-right {
+  transition: all 1s;
+  display: inline-block;
+}
 .todo-item-left {
   flex: 1;
   display: flex;

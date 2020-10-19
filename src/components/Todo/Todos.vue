@@ -2,10 +2,10 @@
   <div class="todos-wrapper">
     <transition-group name="fade-right" tag="div">
       <div class="todo-items" v-for="(todo, index) in todos" :key="todo.id">
-        <!-- ony show todo items with same uid as the logged in user -->
         <TodoItem
           :todo="todo"
           :index="index"
+          class="todo-item"
           @deleteTodo="deleteTodo($event)"
           @toggleComplete="toggleComplete($event)"
         />
@@ -41,5 +41,12 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
+}
+.fade-right-move {
+  transition: transform 0.3s ease-in-out;
+}
+.fade-right-leave-active {
+  width: 100%;
+  position: absolute;
 }
 </style>

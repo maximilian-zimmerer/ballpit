@@ -13,7 +13,7 @@
       />
       <!-- Submit -->
       <input type="submit" value="Register" />
-      <!-- Erros Message -->
+      <!-- Error Message -->
       <transition name="fade-right">
         <section v-if="errorMsg" class="error-wrapper">
           <p class="error-msg">{{ errorMsg }}</p>
@@ -30,11 +30,12 @@
     <transition name="fade-right">
       <section class="reset-wrapper" v-if="showReset">
         <form class="reset-form" v-on:submit.prevent="sendReset">
+          <!-- Label -->
           <label for="email">Password Reset</label>
-          <!-- Input -->
+          <!-- Email Input -->
           <input
-            type="text"
             id="email"
+            type="text"
             v-model="emailReset"
             placeholder="Your Email"
           />
@@ -63,11 +64,8 @@ export default {
     register() {
       firebase
         .auth()
-        //register new user
         .createUserWithEmailAndPassword(this.email, this.password)
-        // .then((account) => {
         .then(() => {
-          //re-route to homepage
           this.$router.push("/");
         })
         .catch((err) => {
@@ -108,15 +106,11 @@ export default {
   color: white;
   border-bottom: 1px solid white;
 }
-.register-wrapper div {
-  width: 100%;
-  height: 100%;
-  padding: 1em;
-}
 .reset-toggler {
   bottom: 0;
   width: 100%;
   padding: 1em;
+  color: grey;
   position: fixed;
   cursor: pointer;
   border-top: 1px solid white;
@@ -141,9 +135,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
   }
-  .reset-wrapper [type="submit"] {
-    text-align: left;
-  }
 }
 @media (min-width: 376px) {
   label {
@@ -152,12 +143,12 @@ export default {
   .reset-wrapper input[type="text"] {
     width: 50%;
   }
-  .reset-wrapper [type="submit"] {
+  .reset-wrapper input[type="submit"] {
     float: right;
   }
   .reset-toggler:hover,
   .reset-wrapper input[type="submit"]:hover {
-    color: grey;
+    color: white;
   }
 }
 </style>

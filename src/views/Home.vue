@@ -1,14 +1,17 @@
 <template>
   <div class="main-wrapper">
-    <transition name="fade">
+    <!-- Todo Canvas -->
+    <transition name="fade" mode="out-in">
       <div v-if="emptyList" class="todo-canvas">
         <TodoCanvas :todos="todos" />
       </div>
     </transition>
+    <!-- Add Todo -->
     <div class="todo-add">
       <AddTodo @newTodo="addTodo($event)" />
     </div>
-    <transition name="fade-right">
+    <!-- Todos -->
+    <transition name="fade-right" mode="out-in">
       <div v-if="emptyList" class="todo-list">
         <Todos
           :todos="todos"
@@ -19,7 +22,8 @@
         />
       </div>
     </transition>
-    <transition name="fade">
+    <!-- Start Typing -->
+    <transition name="fade" mode="out-in">
       <div v-if="!emptyList" class="start-typing">
         <span>Don't you have something to do?</span>
       </div>
@@ -128,6 +132,7 @@ export default {
           const tempTodo = doc.data();
           tempTodos.push(tempTodo);
         });
+        // only add todos with same uid
         this.todos = tempTodos.filter(
           (tempTodo) => tempTodo.uid == this.currentUser.uid
         );

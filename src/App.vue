@@ -30,6 +30,7 @@ body {
   /* overflow: hidden; */
   line-height: 1.4em;
   background: black;
+  -webkit-text-size-adjust: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 * {
@@ -99,16 +100,17 @@ canvas {
 /* fade */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
+
 /* fade-right */
 .fade-right-enter-active,
 .fade-right-leave-active {
-  transition: 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .fade-right-enter {
   opacity: 0;
@@ -118,7 +120,6 @@ canvas {
   opacity: 0;
   transform: translateX(20px);
 }
-
 @media (min-width: 769px) {
   html,
   body,

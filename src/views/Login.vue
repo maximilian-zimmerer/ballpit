@@ -1,15 +1,19 @@
 <template>
   <div class="login-wrapper">
     <form class="login-form" v-on:submit.prevent="login">
+      <!-- Email Input -->
       <input type="text" id="email" v-model="email" placeholder="Email" />
+      <!-- Password Input -->
       <input
         type="text"
         id="password"
         v-model="password"
         placeholder="Password"
       />
+      <!-- Submit -->
       <input type="submit" value="Login" />
       <transition name="fade-right">
+        <!-- Error Message -->
         <section v-if="errorMsg" class="error-wrapper">
           <p class="error-msg">{{ errorMsg }}</p>
         </section>
