@@ -16,7 +16,7 @@
     </section>
     <!-- Logo -->
     <div class="logo-wrapper">
-      <img class="rotate" src="../../../assets/logo/logo.png" />
+      <img src="../../../assets/logo/logo_icon.png" />
     </div>
     <!-- Logout -->
     <!-- Register -->
@@ -62,6 +62,7 @@ export default {
   z-index: 1;
   padding: 1em;
   display: grid;
+  backdrop-filter: blur(5px);
   border-bottom: 1px solid white;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -85,17 +86,6 @@ img {
   width: 2em;
   height: 2em;
   cursor: default;
-}
-.rotate {
-  animation: rotation 8s infinite linear;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
 }
 .logout-wrapper {
   width: 100%;

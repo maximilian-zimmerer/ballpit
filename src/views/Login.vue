@@ -14,9 +14,11 @@
       <!-- Submit -->
       <input type="submit" value="Login" />
       <!-- Error Message -->
-      <section v-if="errorMsg" class="error-wrapper">
-        <span class="error-msg">{{ errorMsg }}</span>
-      </section>
+      <transition name="fade-right">
+        <section v-if="errorMsg" class="error-wrapper">
+          <span class="error-msg">{{ errorMsg }}</span>
+        </section>
+      </transition>
     </form>
     <!-- Logo -->
     <div class="logo-wrapper">
@@ -87,5 +89,10 @@ export default {
   width: 100%;
   height: auto;
   object-fit: scale-down;
+}
+@media (max-width: 1023px) and (orientation: landscape) {
+  .logo-wrapper {
+    display: none !important;
+  }
 }
 </style>

@@ -149,7 +149,7 @@ export default {
             });
         })
         .catch((err) => {
-          console.log(err);
+          this.errorMsg = err.message;
         });
     },
     // Logout function

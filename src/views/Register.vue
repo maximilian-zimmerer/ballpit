@@ -23,7 +23,7 @@
     <!-- Reset Toggle -->
     <transition name="fade-right">
       <section class="reset-toggle" v-if="!showReset" @click="toggleReset">
-        <span>Forgot my password</span>
+        <span>Forgot your password ?</span>
       </section>
     </transition>
     <!-- Reset Form -->
@@ -79,7 +79,7 @@ export default {
         // send password reset email
         .sendPasswordResetEmail(this.emailReset)
         .then(() => {
-          this.errorMsg = `Email sent to ${this.emailReset}!`;
+          this.errorMsg = `Email sent to ${this.emailReset}`;
           this.emailReset = "";
         })
         .catch((err) => {

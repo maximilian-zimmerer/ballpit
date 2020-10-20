@@ -39,7 +39,8 @@ export default {
 <style scoped>
 .todos-wrapper {
   width: 100%;
-  height: 100%;
+  height: max-content;
+  backdrop-filter: blur(5px);
 }
 /* animation */
 .fade-right-move {
