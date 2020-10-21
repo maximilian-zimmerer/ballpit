@@ -15,7 +15,7 @@
       </span>
     </section>
     <!-- Logo -->
-    <div class="logo-wrapper">
+    <div class="logo-icon-wrapper">
       <img src="../../../assets/logo/logo_icon.png" />
     </div>
     <!-- Logout -->
@@ -77,7 +77,7 @@ export default {
 .header-nav .link:nth-of-type(1) {
   padding-right: 1em;
 }
-.logo-wrapper {
+.logo-icon-wrapper {
   display: flex;
   align-content: center;
   justify-content: center;

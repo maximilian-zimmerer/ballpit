@@ -253,6 +253,9 @@ section a:hover {
 .password-form input[type="text"] {
   color: white;
 }
+.password-form input[type="submit"] {
+  color: grey;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -318,7 +321,7 @@ input:-webkit-autofill:active {
     float: right;
   }
   .password-form input[type="submit"]:hover {
-    color: grey;
+    color: white;
   }
   .delete-form input:hover {
     color: orange;

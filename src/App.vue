@@ -46,6 +46,22 @@ a:visited {
   cursor: pointer;
   text-decoration: none;
 }
+button,
+button:focus,
+button:hover,
+button:active {
+  border: none;
+  outline: none;
+  color: grey;
+  padding: 1em;
+  font-size: 17px;
+  cursor: pointer;
+  background: transparent;
+  border-bottom: 1px solid white;
+}
+button:hover {
+  color: white !important;
+}
 input,
 select,
 textarea,
@@ -90,6 +106,19 @@ input:-webkit-autofill:active {
   text-decoration: underline;
   text-decoration-color: yellow;
 }
+.logo-text-wrapper {
+  flex: 1;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.logo-text {
+  width: 100%;
+  height: auto;
+  object-fit: scale-down;
+}
 #app {
   width: 100%;
   height: 100%;
@@ -124,11 +153,20 @@ canvas {
   opacity: 0;
   transform: translateX(20px);
 }
+@media (max-width: 1023px) and (orientation: landscape) {
+  .logo-text-wrapper {
+    display: none !important;
+  }
+}
 @media (min-width: 769px) {
   html,
   body,
   input,
   select,
+  button,
+  button:focus,
+  button:hover,
+  button:active,
   textarea,
   input:focus,
   select:focus,

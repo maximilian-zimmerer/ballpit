@@ -5,12 +5,16 @@
       <!-- Email Input -->
       <input type="text" id="email" v-model="email" placeholder="Email" />
       <!-- Password Input -->
-      <input
-        type="text"
-        id="password"
-        v-model="password"
-        placeholder="Password"
-      />
+      <section class="password-flex">
+        <input
+          type="text"
+          id="password"
+          v-model="password"
+          placeholder="Password"
+        />
+        <!-- Password Toggle -->
+        <button type="button" @click="toggleReset">Forgot</button>
+      </section>
       <!-- Submit -->
       <input type="submit" value="Login" />
       <!-- Error Message -->
@@ -20,10 +24,30 @@
         </section>
       </transition>
     </form>
+    <!-- Reset Form -->
+    <transition name="fade-right">
+      <section class="reset-wrapper" v-if="showReset">
+        <form class="reset-form" v-on:submit.prevent="sendReset">
+          <!-- Label -->
+          <label for="email">Password Reset</label>
+          <!-- Email Input -->
+          <input
+            id="email"
+            type="text"
+            v-model="emailReset"
+            placeholder="Your Email"
+          />
+          <!-- Submit -->
+          <input type="submit" value="Send" />
+        </form>
+      </section>
+    </transition>
     <!-- Logo -->
-    <div class="logo-wrapper">
-      <img class="logo" src="../../assets/logo/logo_text.png" />
-    </div>
+    <transition name="fade-right">
+      <div class="logo-text-wrapper" v-if="!showReset">
+        <img class="logo-text" src="../../assets/logo/logo_text.png" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -35,7 +59,9 @@ export default {
     return {
       email: "",
       password: "",
+      emailReset: "",
       errorMsg: false,
+      showReset: false,
     };
   },
   methods: {
@@ -49,6 +75,23 @@ export default {
         })
         .catch((err) => {
           this.errorMsg = err;
+        });
+    },
+    toggleReset() {
+      this.showReset = !this.showReset;
+    },
+    sendReset() {
+      firebase
+        .auth()
+        // send password reset email
+        .sendPasswordResetEmail(this.emailReset)
+        .then(() => {
+          this.errorMsg = `Email sent to ${this.emailReset}`;
+          this.emailReset = "";
+        })
+        .catch((err) => {
+          this.errorMsg = err;
+          this.emailReset = "";
         });
     },
   },
@@ -68,31 +111,52 @@ export default {
 }
 .login-form input {
   padding: 1em;
-  color: white;
   border-bottom: 1px solid white;
 }
-.login-form input[type="submit"] {
+input[type="submit"] {
   color: grey;
 }
-.login-form input[type="submit"]:hover {
-  color: white;
+.password-flex {
+  width: 100%;
+  display: flex;
+  height: min-content;
+  flex-direction: row;
 }
-.logo-wrapper {
+#password {
   flex: 1;
+}
+.reset-wrapper {
+  bottom: 0;
   width: 100%;
   padding: 1em;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  position: fixed;
+  border-top: 1px solid white;
 }
-.logo {
-  width: 100%;
-  height: auto;
-  object-fit: scale-down;
+@media (max-width: 375px) {
+  .reset-form {
+    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .reset-form input[type="submit"] {
+    text-align: left;
+    width: min-content;
+  }
 }
-@media (max-width: 1023px) and (orientation: landscape) {
-  .logo-wrapper {
-    display: none !important;
+@media (min-width: 376px) {
+  label {
+    padding-right: 1em;
+  }
+  .reset-wrapper input[type="text"] {
+    width: 50%;
+  }
+  .reset-wrapper input[type="submit"] {
+    float: right;
+  }
+}
+@media (min-width: 1300px) {
+  input[type="submit"]:hover {
+    color: white;
   }
 }
 </style>
