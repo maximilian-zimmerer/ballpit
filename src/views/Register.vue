@@ -70,15 +70,13 @@ export default {
 }
 input {
   padding: 1em;
-  border-bottom: 1px solid white;
-}
-input[type="text"] {
   color: white;
-}
-input[type="submit"] {
-  color: grey;
+  border-bottom: 1px solid white !important;
 }
 @media (min-width: 1300px) {
+  input[type="submit"] {
+    color: grey;
+  }
   input[type="submit"]:hover {
     color: white;
   }

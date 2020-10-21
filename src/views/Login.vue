@@ -114,7 +114,7 @@ export default {
   border-bottom: 1px solid white;
 }
 input[type="submit"] {
-  color: grey;
+  color: white;
 }
 .password-flex {
   width: 100%;
@@ -155,6 +155,9 @@ input[type="submit"] {
   }
 }
 @media (min-width: 1300px) {
+  input[type="submit"] {
+    color: grey;
+  }
   input[type="submit"]:hover {
     color: white;
   }

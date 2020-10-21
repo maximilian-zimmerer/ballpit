@@ -286,6 +286,7 @@ input:-webkit-autofill:active {
     display: grid;
   }
   .password-form input[type="submit"] {
+    color: white;
     text-align: left;
   }
   .error-wrapper {

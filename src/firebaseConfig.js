@@ -1,4 +1,3 @@
-// Your web app's Firebase configuration
 export default {
   apiKey: "AIzaSyBkwByXhFLBBCt1wVEnoGUC9E-W4-ZOxp0",
   authDomain: "todo-list-1-900db.firebaseapp.com",
