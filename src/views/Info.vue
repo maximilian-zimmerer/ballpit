@@ -13,7 +13,7 @@
           <label for="newPassword">Change Password:</label>
           <!-- Input -->
           <input
-            type="text"
+            type="password"
             id="newPassword"
             v-model="newPassword"
             placeholder="Favorite Animal?"

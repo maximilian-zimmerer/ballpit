@@ -6,8 +6,8 @@
       <input type="text" id="email" v-model="email" placeholder="Email" />
       <!-- Password Input -->
       <input
-        type="text"
         id="password"
+        type="password"
         v-model="password"
         placeholder="Password"
       />

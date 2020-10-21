@@ -7,8 +7,8 @@
       <!-- Password Input -->
       <section class="password-flex">
         <input
-          type="text"
           id="password"
+          type="password"
           v-model="password"
           placeholder="Password"
         />
