@@ -5,22 +5,22 @@
       <!-- Email Input -->
       <input type="text" id="email" v-model="email" placeholder="Email" />
       <!-- Password Input -->
-      <section class="password-flex">
-        <input
-          id="password"
-          type="password"
-          v-model="password"
-          placeholder="Password"
-        />
-        <!-- Password Toggle -->
-        <button type="button" @click="toggleReset">Forgot</button>
-      </section>
+      <input
+        id="password"
+        type="password"
+        v-model="password"
+        placeholder="Password"
+      />
       <!-- Submit -->
       <input type="submit" value="Login" />
       <!-- Error Message -->
       <transition name="fade-right">
         <section v-if="errorMsg" class="error-wrapper">
-          <span class="error-msg">{{ errorMsg }}</span>
+          <span class="error-msg">{{ errorMsg }} </span>
+          <!-- Password Reset Toggle -->
+          <span class="error-msg-link" @click="toggleReset">
+            Reset Password?</span
+          >
         </section>
       </transition>
     </form>
@@ -111,19 +111,10 @@ export default {
 }
 .login-form input {
   padding: 1em;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid grey;
 }
 input[type="submit"] {
   color: white;
-}
-.password-flex {
-  width: 100%;
-  display: flex;
-  height: min-content;
-  flex-direction: row;
-}
-#password {
-  flex: 1;
 }
 .reset-wrapper {
   bottom: 0;
@@ -155,11 +146,8 @@ input[type="submit"] {
   }
 }
 @media (min-width: 1300px) {
-  input[type="submit"] {
-    color: grey;
-  }
   input[type="submit"]:hover {
-    color: white;
+    color: yellow;
   }
 }
 </style>

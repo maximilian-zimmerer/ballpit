@@ -68,17 +68,14 @@ export default {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 }
-input {
+.register-form input {
   padding: 1em;
   color: white;
-  border-bottom: 1px solid white !important;
+  border-bottom: 1px solid grey;
 }
 @media (min-width: 1300px) {
-  input[type="submit"] {
-    color: grey;
-  }
   input[type="submit"]:hover {
-    color: white;
+    color: yellow;
   }
 }
 </style>

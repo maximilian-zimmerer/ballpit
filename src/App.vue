@@ -57,7 +57,7 @@ button:active {
   font-size: 17px;
   cursor: pointer;
   background: transparent;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid grey;
 }
 button:hover {
   color: white !important;
@@ -103,8 +103,12 @@ input:-webkit-autofill:active {
 }
 .error-msg {
   color: yellow;
+}
+.error-msg-link {
+  cursor: pointer;
+  color: lightgreen;
   text-decoration: underline;
-  text-decoration-color: yellow;
+  text-decoration-color: lightgreen;
 }
 .logo-text-wrapper {
   flex: 1;
