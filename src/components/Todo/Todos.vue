@@ -7,7 +7,8 @@
           :index="index"
           class="todo-item"
           @deleteTodo="deleteTodo($event)"
-          @toggleComplete="toggleComplete($event)"
+          @updateText="updateText($event)"
+          @updateComplete="updateComplete($event)"
         />
       </div>
     </transition-group>
@@ -26,11 +27,14 @@ export default {
     newTodo(newTodo) {
       this.$emit("newTodo", newTodo);
     },
-    toggleComplete(data) {
-      this.$emit("toggleComplete", data);
-    },
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
+    },
+    updateText(data) {
+      this.$emit("updateText", data);
+    },
+    updateComplete(data) {
+      this.$emit("updateComplete", data);
     },
   },
 };
@@ -40,7 +44,7 @@ export default {
 .todos-wrapper {
   width: 100%;
   height: max-content;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
 /* animation */
 .fade-right-move {

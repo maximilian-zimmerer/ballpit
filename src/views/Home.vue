@@ -18,7 +18,8 @@
           :currentUser="currentUser"
           @newTodo="addTodo($event)"
           @deleteTodo="deleteTodo($event)"
-          @toggleComplete="toggleComplete($event)"
+          @updateText="updateText($event)"
+          @updateComplete="updateComplete($event)"
         />
       </div>
     </transition>
@@ -37,7 +38,6 @@ import firebase from "firebase/app";
 import Todos from "@/components/Todo/Todos.vue";
 import AddTodo from "@/components/Todo/AddTodo.vue";
 import TodoCanvas from "@/components/Todo/TodoCanvas.vue";
-
 // Initialize Firebase
 const FBtodos = db.collection("todos");
 const FBcounter = db.collection("counter");
@@ -55,9 +55,8 @@ export default {
     };
   },
   methods: {
-    // add todo
+    // firebase
     addTodo(newTodo) {
-      // firebase
       FBtodos.doc()
         .set(newTodo)
         .then(() => {
@@ -68,16 +67,13 @@ export default {
           console.error(err);
         });
     },
-    // firebase
-    // update isComplete state
-    toggleComplete(data) {
-      // reference document according to id
+    updateComplete(data) {
+      // firebase
       const myTodos = FBtodos.where("id", "==", `${data.id}`);
       myTodos
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            // get document id and update isComplete field
             return FBtodos.doc(doc.id).update({
               isComplete: data.isComplete,
             });
@@ -87,16 +83,30 @@ export default {
           console.error(err);
         });
     },
-    // delete todo
+    updateText(data) {
+      // firebase
+      const myTodos = FBtodos.where("id", "==", `${data.id}`);
+      myTodos
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            return FBtodos.doc(doc.id).update({
+              text: data.text,
+            });
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
     deleteTodo(id) {
+      // firebase
       const myTodos = FBtodos.where("id", "==", `${id}`);
       myTodos.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           doc.ref.delete();
         });
       });
-      // firebase
-      // increment completed todos counter
       FBcounter.doc(`${this.currentUser.uid}`)
         .get()
         .then((doc) => {
@@ -122,14 +132,12 @@ export default {
       return this.todos.length;
     },
   },
-
   created() {
     // get current user
     this.currentUser = firebase.auth().currentUser;
   },
   mounted() {
     // firebase
-    // import data
     FBtodos.get()
       .then((docs) => {
         const tempTodos = [];

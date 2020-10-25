@@ -69,6 +69,7 @@ input:focus,
 select:focus,
 textarea:focus {
   padding: 0;
+  border: none;
   outline: none;
   color: white;
   font-size: 17px;
