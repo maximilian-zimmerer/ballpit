@@ -116,6 +116,7 @@ export default {
 .completed {
   cursor: pointer;
 }
+
 .index {
   cursor: default;
 }
@@ -157,6 +158,11 @@ input {
   text-decoration: line-through;
 }
 @media (max-width: 767px) {
+  .edit,
+  .index,
+  .remove {
+    color: grey;
+  }
   .completed-wrapper {
     display: none;
   }

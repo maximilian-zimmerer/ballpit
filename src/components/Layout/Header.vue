@@ -62,7 +62,7 @@ export default {
   z-index: 1;
   padding: 1em;
   display: grid;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid white;
   grid-template-columns: repeat(3, 1fr);
 }

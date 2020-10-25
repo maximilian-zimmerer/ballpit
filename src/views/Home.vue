@@ -169,7 +169,7 @@ export default {
 }
 .todo-add {
   z-index: 1;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
 .todo-list {
   z-index: 1;
