@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Sitemap: https://www.ballpit.app/sitemap.xml
+
+User-agent: CuteStat
+Disallow: /
