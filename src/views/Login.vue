@@ -45,7 +45,13 @@
     <!-- Logo -->
     <transition name="fade-right">
       <div class="logo-text-wrapper" v-if="!showReset">
-        <img class="logo-text" src="../../assets/logo/logo_text.png" />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.maxi.studio/ballpit"
+        >
+          <img class="logo-text" src="../../assets/logo/logo_text.png" />
+        </a>
       </div>
     </transition>
   </div>
