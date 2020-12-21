@@ -18,7 +18,7 @@ To try out Ballpit, please visit the [live app](https://www.ballpit.app).
 npm install
 ```
 
-## Compiles and hot-reloads for development (Vue.js)
+## Compile and hot-reload for development (Vue.js)
 
 ```
 npm run serve
