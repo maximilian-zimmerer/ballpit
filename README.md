@@ -8,7 +8,7 @@ To view the entire case study, please visit my [website](https://www.maxi.studio
 
 ## Live App
 
-To try out Ballpit, please visit the [live app](https://www.ballpit.app).
+To try out Ballpit, please visit the [live app](http:ballpit.maxi.studio).
 
 ![alt text](https://cdn.glitch.com/b4cd9c5e-4515-4298-ac12-97fd727eaf29%2FScreen%20Shot%202020-10-28%20at%2010.32.42%20AM.png?v=1603881430220)
 
