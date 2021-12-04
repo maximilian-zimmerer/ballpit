@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/one-screen-apart/",
+  publicPath: "/ballpit/",
 };
